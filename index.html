@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Washington D.C. Database for Missing and Murdered Black Women</title>
+
+  <!-- Google Fonts for the "Senseable City Lab" Technical Aesthetic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Mapbox CSS -->
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.15.0/mapbox-gl.css" rel="stylesheet" />
+
+  <style>
+    /* =========================================================
+       CORE VARIABLES & RESET
+       ========================================================= */
+    :root {
+      --bg: #050505;
+      --panel-bg: rgba(10, 10, 10, 0.85);
+      --text-main: #f0f0f0;
+      --text-muted: #888888;
+      --border: rgba(255, 255, 255, 0.15);
+      --accent: #ffffff;
+      
+      --font-ui: 'Inter', Helvetica, sans-serif;
+      --font-data: 'Space Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      cursor: crosshair; /* Forensic UI touch */
+    }
+
+    body, html {
+      width: 100%;
+      height: 100vh;
+      overflow: hidden; /* Lock scrolling to panels */
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: var(--font-ui);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    /* Architectural Grid Background */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-image: 
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* =========================================================
+       LAYOUT (Split Dashboard)
+       ========================================================= */
+    .dashboard {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    /* HEADER */
+    header {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+      z-index: 10;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 20px 40px;
+    }
+
+    .site-label {
+      font-family: var(--font-data);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+    }
+
+    .title-container {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h1.title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      line-height: 1.4;
+    }
+
+    .search-button {
+      display: inline-block;
+      padding: 8px 16px;
+      background: transparent;
+      color: var(--text-main);
+      border: 1px solid var(--border);
+      font-family: var(--font-data);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .search-button:hover {
+      background: var(--text-main);
+      color: var(--bg);
+    }
+
+    /* NAVIGATION */
+    nav {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--border);
+    }
+
+    nav a {
+      display: block;
+      text-align: center;
+      padding: 12px 0;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-family: var(--font-data);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-right: 1px solid var(--border);
+      transition: all 0.2s;
+    }
+
+    nav a:last-child {
+      border-right: none;
+    }
+
+    nav a:hover {
+      background: rgba(255,255,255,0.05);
+      color: var(--text-main);
+    }
+
+    /* MAIN CONTENT AREA */
+    .main-workspace {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    /* LEFT DATA PANEL */
+    .data-panel {
+      width: 450px;
+      min-width: 450px;
+      background: var(--panel-bg);
+      backdrop-filter: blur(10px);
+      border-right: 1px solid var(--border);
+      padding: 40px;
+      overflow-y: auto;
+      scrollbar-width: none; /* Hide scrollbar for cleaner UI */
+    }
+
+    .data-panel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .section-block {
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    /* Decorator line to look like a technical readout */
+    .section-block::before {
+      content: "";
+      position: absolute;
+      left: -40px;
+      top: 5px;
+      width: 15px;
+      height: 1px;
+      background: var(--border);
+    }
+
+    h2, h3 {
+      font-family: var(--font-data);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    h2 {
+      font-size: 14px;
+      margin-bottom: 16px;
+      color: var(--accent);
+    }
+
+    h3 {
+      font-size: 12px;
+      margin-bottom: 12px;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+    }
+
+    p {
+      color: #c0c0c0;
+      margin-bottom: 16px;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .underline {
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 2px;
+    }
+
+    strong {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    /* SENSEABLE LAB STYLE METRICS */
+    .numbers {
+      list-style: none;
+      margin: 20px 0 40px 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .numbers li {
+      display: flex;
+      align-items: flex-start;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      padding: 12px 16px;
+      font-family: var(--font-ui);
+    }
+
+    .icon {
+      font-size: 14px;
+      margin-right: 12px;
+      filter: grayscale(100%) brightness(150%);
+    }
+
+    .metric-data {
+      font-size: 13px;
+      color: #c0c0c0;
+    }
+
+    .metric-data strong {
+      font-family: var(--font-data);
+      font-size: 13px;
+      color: var(--text-main);
+    }
+
+    /* THE FINDING CALLOUT */
+    .finding-box {
+      border: 1px solid var(--accent);
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      margin-bottom: 30px;
+    }
+
+    .finding {
+      font-family: var(--font-data);
+      font-size: 13px;
+      text-transform: uppercase;
+      line-height: 1.5;
+      margin-bottom: 0;
+      color: var(--accent);
+      letter-spacing: 0.02em;
+    }
+
+    /* RIGHT MAP PANEL */
+    .map-panel {
+      flex: 1;
+      position: relative;
+      background: #000;
+    }
+
+    #map {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+    }
+
+    /* Map UI Overlay */
+    .map-overlay-coord {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(0,0,0,0.8);
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      font-family: var(--font-data);
+      font-size: 10px;
+      color: var(--text-muted);
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .main-workspace { flex-direction: column; }
+      .data-panel { width: 100%; min-width: 100%; height: 50vh; }
+      .map-panel { height: 50vh; }
+      nav { grid-template-columns: repeat(2, 1fr); }
+      nav a { border-bottom: 1px solid var(--border); }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="dashboard">
+    <!-- HEADER SECTION -->
+    <header>
+      <div class="header-top">
+        <div class="site-label">MMBDB // GEO-DATA</div>
+        
+        <div class="title-container">
+          <h1 class="title">Washington D.C. Database for Missing and Murdered Black Women:</h1>
+        </div>
+
+        <a class="search-button" href="#">Advanced Search Tool</a>
+      </div>
+
+      <nav aria-label="Primary navigation">
+        <a href="#">Database</a>
+        <a href="#">About:</a>
+        <a href="#">Missing Persons</a>
+        <a href="#">Unidentified Persons</a>
+      </nav>
+    </header>
+
+    <!-- MAIN WORKSPACE -->
+    <div class="main-workspace">
+      
+      <!-- LEFT PANEL: FORENSIC DATA -->
+      <section class="data-panel">
+        
+        <div class="section-block">
+          <h2>About <span class="underline">“DEADLINING”:</span></h2>
+          <p>As neighborhoods transform, Black female bodies become both targets and warnings,</p>
+          <p>Their murders are simultaneously rising in number yet falling in priority.</p>
+        </div>
+
+        <div class="section-block">
+          <h3>The Numbers:</h3>
+          <ul class="numbers">
+            <li>
+              <span class="icon">📍</span>
+              <span class="metric-data"><strong>24% Closer:</strong> Average proximity to interstate highways.</span>
+            </li>
+            <li>
+              <span class="icon">🛣️</span>
+              <span class="metric-data"><strong>70.5%:</strong> Cases occurred within <strong>2 km</strong> of a major highway.</span>
+            </li>
+            <li>
+              <span class="icon">📊</span>
+              <span class="metric-data"><strong>7.46 Cases/km:</strong> Highest corridor density: <strong>Suitland Parkway.</strong></span>
+            </li>
+            <li>
+              <span class="icon">📍</span>
+              <span class="metric-data"><strong>64.5%:</strong> Cases clustered near <strong>I-395, I-295, and Suitland Parkway.</strong></span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="section-block">
+          <h3>Geography of Invisibility:</h3>
+          <p>The highest documented case density occurred along Suitland Parkway, where a new era of redevelopment is transforming a corridor long shaped by displacement.</p>
+        </div>
+
+        <div class="section-block finding-box">
+          <h3>The Finding:</h3>
+          <p class="finding">Documented cases cluster within liminal zones of urban <strong>"Redevelopment" &amp;</strong> jurisdictional invisibility.</p>
+        </div>
+
+        <div class="section-block">
+          <p><strong>WHY WE EXIST:</strong> To close critical gaps in missing and murdered persons data by creating a publicly accessible forensic database that supports investigations and advances geospatial research into the structural conditions that shape victimization.</p>
+        </div>
+
+      </section>
+
+      <!-- RIGHT PANEL: INTERACTIVE MAP -->
+      <section class="map-panel">
+        <div id="map"></div>
+        <div class="map-overlay-coord">LAT 38.9072 // LNG -77.0369</div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- MAPBOX SCRIPT -->
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.15.0/mapbox-gl.js"></script>
+  <script>
+    // Using the access token previously provided
+    mapboxgl.accessToken = "pk.eyJ1IjoiYXZlcnllam9obnMiLCJhIjoiY21uNmo3YnNiMDZrYTJwcTFwcHRzOG83NCJ9.aFx3CE9PzNOHSiDO7cEf2g";
+
+    const map = new mapboxgl.Map({
+      container: "map",
+      style: "mapbox://styles/mapbox/dark-v11", // Strict dark mode for lab aesthetic
+      center: [-76.99, 38.85], // Centered closer to Suitland Parkway / I-295
+      zoom: 11.5,
+      pitch: 45, // Angled for a 3D architectural feel
+      bearing: -17.6,
+      antialias: true
+    });
+
+    // Add UI controls in dark theme
+    map.addControl(new mapboxgl.NavigationControl({ visualizePitch: true }), "top-right");
+
+    // Optional: Add 3D buildings layer to enhance the "Senseable City Lab" urban data feel
+    map.on('style.load', () => {
+      const layers = map.getStyle().layers;
+      const labelLayerId = layers.find(
+          (layer) => layer.type === 'symbol' && layer.layout['text-field']
+      ).id;
+
+      map.addLayer(
+          {
+              'id': 'add-3d-buildings',
+              'source': 'composite',
+              'source-layer': 'building',
+              'filter': ['==', 'extrude', 'true'],
+              'type': 'fill-extrusion',
+              'minzoom': 15,
+              'paint': {
+                  'fill-extrusion-color': '#222',
+                  'fill-extrusion-height': [
+                      'interpolate',
+                      ['linear'],
+                      ['zoom'],
+                      15,
+                      0,
+                      15.05,
+                      ['get', 'height']
+                  ],
+                  'fill-extrusion-base': [
+                      'interpolate',
+                      ['linear'],
+                      ['zoom'],
+                      15,
+                      0,
+                      15.05,
+                      ['get', 'min_height']
+                  ],
+                  'fill-extrusion-opacity': 0.6
+              }
+          },
+          labelLayerId
+      );
+    });
+  </script>
+</body>
+</html>
