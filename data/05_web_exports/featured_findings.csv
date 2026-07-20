@@ -1,0 +1,4 @@
+finding_id,headline,value,description
+highway_proximity,Documented cases occurred closer to interstate highways,24.2% closer,"Case locations averaged 1,578.39 m from the nearest interstate compared with 2,081.84 m for Washington, D.C. census tract centroids."
+two_km_buffer,Most documented cases were within two kilometers of an interstate,70.5%,70.5% of documented case locations occurred within 2 km of a major interstate.
+highest_density_corridor,Highest documented case density,Suitland Parkway,Suitland Parkway exhibited the highest documented case density (7.46 cases per kilometer).
