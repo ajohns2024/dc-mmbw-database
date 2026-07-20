@@ -430,28 +430,60 @@ function addCaseLayer() {
     });
 
    
+const pinSVG = `
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        height="42"
+        viewBox="0 0 32 42"
+    >
+        <path
+            d="M16 1C8.3 1 2 7.3 2 15c0 10.5 14 26 14 26s14-15.5 14-26C30 7.3 23.7 1 16 1z"
+            fill="#c1121f"
+            stroke="#ffffff"
+            stroke-width="1.5"
+        />
+        <circle
+            cx="16"
+            cy="15"
+            r="5"
+            fill="#ffffff"
+        />
+    </svg>
+`;
 
-   map.addLayer({
-    id: "case-location-points",
-    type: "circle",
-    source: "case-points",
+const pinImage = new Image(32, 42);
 
-    paint: {
-        "circle-radius": [
-            "interpolate",
-            ["linear"],
-            ["zoom"],
-            12, 3.5,
-            16, 4.5
-        ],
-
-       "circle-color": "#6f102d",
-        "circle-opacity": 0.95,
-
-        "circle-stroke-color": "#f5e9e9",
-        "circle-stroke-width": 1.2
+pinImage.onload = () => {
+    if (!map.hasImage("case-pin")) {
+        map.addImage("case-pin", pinImage);
     }
-});
+
+    map.addLayer({
+        id: "case-location-points",
+        type: "symbol",
+        source: "case-points",
+
+        layout: {
+            "icon-image": "case-pin",
+            "icon-size": [
+                "interpolate",
+                ["linear"],
+                ["zoom"],
+                8, 0.55,
+                12, 0.75,
+                16, 1
+            ],
+            "icon-anchor": "bottom",
+            "icon-allow-overlap": true,
+            "icon-ignore-placement": true
+        }
+    });
+};
+
+pinImage.src =
+    "data:image/svg+xml;charset=utf-8," +
+    encodeURIComponent(pinSVG);
         
     map.on("click", "case-location-points", (event) => {
         if (!event.features || !event.features.length) {
