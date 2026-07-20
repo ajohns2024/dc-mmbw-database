@@ -4,7 +4,7 @@
    MAPBOX TOKEN
 ========================================= */
 
-mapboxgl.accessToken = "PASTE_YOUR_MAPBOX_PUBLIC_ACCESS_TOKEN_HERE";
+mapboxgl.accessToken = "pk.eyJ1IjoiYXZlcnllam9obnMiLCJhIjoiY21uNmo3YnNiMDZrYTJwcTFwcHRzOG83NCJ9.aFx3CE9PzNOHSiDO7cEf2g";
 
 
 /* =========================================
@@ -523,7 +523,7 @@ function initializeMap() {
 
     if (tokenIsMissing) {
         mapLoading.textContent =
-            "pk.eyJ1IjoiYXZlcnllam9obnMiLCJhIjoiY21uNmo3YnNiMDZrYTJwcTFwcHRzOG83NCJ9.aFx3CE9PzNOHSiDO7cEf2g";
+            "Upload Mapbox Public Access Token";
 
         searchStatus.textContent =
             "The map requires a Mapbox public access token.";
