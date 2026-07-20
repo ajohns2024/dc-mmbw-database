@@ -338,55 +338,36 @@ function createPopupHTML(properties) {
         return String(field);
     };
 
+    const name = value(properties.display_name);
+    const caseType = value(properties.case_type);
+    const age = value(properties.age_at_event);
+    const location = value(properties.geocoded_address);
+    const year = value(properties.year_last_seen);
+    const status = value(properties.case_status);
+    const summary = value(properties.case_summary);
     const sourceLink = value(properties.source_link);
 
     return `
         <div class="case-popup">
-            <h2>${value(properties.display_name)}</h2>
+            <h2>${name}</h2>
 
             <div class="popup-divider"></div>
 
-            <div class="popup-field">
-                <span class="popup-label">CASE TYPE</span>
-                <span class="popup-value">
-                    ${value(properties.case_type)}
-                </span>
-            </div>
+            <div class="popup-detail">🔴 ${caseType}</div>
+            <div class="popup-detail">🎂 ${age} years old</div>
+            <div class="popup-detail">📍 ${location}</div>
+            <div class="popup-detail">📅 ${year}</div>
+            <div class="popup-detail">📂 ${status}</div>
 
-            <div class="popup-field">
-                <span class="popup-label">STATUS</span>
-                <span class="popup-value">
-                    ${value(properties.case_status)}
-                </span>
-            </div>
-
-            <div class="popup-field">
-                <span class="popup-label">LOCATION</span>
-                <span class="popup-value">
-                    ${value(properties.geocoded_address)}
-                </span>
-            </div>
-
-            <div class="popup-field">
-                <span class="popup-label">YEAR LAST SEEN</span>
-                <span class="popup-value">
-                    ${value(properties.year_last_seen)}
-                </span>
-            </div>
-
-            <div class="popup-field">
-                <span class="popup-label">AGE</span>
-                <span class="popup-value">
-                    ${value(properties.age_at_event)}
-                </span>
-            </div>
-
-            <div class="popup-field">
-                <span class="popup-label">INFORMATION</span>
-                <span class="popup-value">
-                    ${value(properties.case_summary)}
-                </span>
-            </div>
+            ${
+                summary !== "Unknown"
+                    ? `
+                        <p class="popup-summary">
+                            “${summary}”
+                        </p>
+                    `
+                    : ""
+            }
 
             ${
                 sourceLink !== "Unknown"
@@ -397,7 +378,7 @@ function createPopupHTML(properties) {
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            VIEW SOURCE →
+                            ↗ View Source
                         </a>
                     `
                     : ""
