@@ -6,7 +6,6 @@
 
 mapboxgl.accessToken = "pk.eyJ1IjoiYXZlcnllam9obnMiLCJhIjoiY21uNmo3YnNiMDZrYTJwcTFwcHRzOG83NCJ9.aFx3CE9PzNOHSiDO7cEf2g";
 
-
 /* =========================================
    FILE PATHS
 ========================================= */
@@ -516,12 +515,8 @@ function addCaseLayer() {
 ========================================= */
 
 function initializeMap() {
-    const tokenIsMissing =
-        !mapboxgl.accessToken ||
-        mapboxgl.accessToken ===
-            "pk.eyJ1IjoiYXZlcnllam9obnMiLCJhIjoiY21uNmo3YnNiMDZrYTJwcTFwcHRzOG83NCJ9.aFx3CE9PzNOHSiDO7cEf2g";
 
-    if (tokenIsMissing) {
+    if (!mapboxgl.accessToken) {
         mapLoading.textContent =
             "Upload Mapbox Public Access Token";
 
@@ -531,6 +526,17 @@ function initializeMap() {
         return;
     }
 
+    map = new mapboxgl.Map({
+        container: "map",
+        style: "mapbox://styles/mapbox/light-v11",
+        center: [-77.0369, 38.9072],
+        zoom: 10.15,
+        minZoom: 8,
+        maxZoom: 18
+    });
+
+    // ...
+}
 
     map = new mapboxgl.Map({
         container: "map",
