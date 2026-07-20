@@ -354,7 +354,7 @@ function createPopupHTML(properties) {
             <div class="popup-divider"></div>
 
             <div class="popup-detail">🔴 ${caseType}</div>
-            <div class="popup-detail">🎂 ${age} years old</div>
+            <div class="popup-detail">🎂 Age ${age}</div>
             <div class="popup-detail">📍 ${location}</div>
             <div class="popup-detail">📅 ${year}</div>
             <div class="popup-detail">📂 ${status}</div>
