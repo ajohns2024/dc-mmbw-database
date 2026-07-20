@@ -241,74 +241,69 @@ function applyFilters() {
     updateMapCases(filteredCases);
 }
 
-
 function createPopupHTML(properties) {
-    const name =
-        properties.display_name || "Name unavailable";
 
-    const caseType =
-        properties.case_type || "Not specified";
-
-    const year =
-        properties.year_last_seen || "Not specified";
-
-    const age =
-        properties.age_at_event || "Not specified";
-
-    const location =
-        properties.geocoded_address || "Location unavailable";
-
-    const summary =
-        properties.case_summary || "";
-
-    const sourceLink =
-        properties.source_link || "";
+    const value = (field) => {
+        return field && String(field).trim()
+            ? field
+            : "Unknown";
+    };
 
     return `
         <div class="case-popup">
 
-            <h3>${escapeHTML(name)}</h3>
+            <h2>${value(properties.display_name)}</h2>
 
-            <p>
-                <strong>Case type:</strong>
-                ${escapeHTML(caseType)}
-            </p>
+            <div class="popup-divider"></div>
 
-            <p>
-                <strong>Year:</strong>
-                ${escapeHTML(year)}
-            </p>
+            <div class="popup-field">
+                <span class="popup-label">CASE TYPE</span>
+                <span class="popup-value">${value(properties.case_type)}</span>
+            </div>
 
-            <p>
-                <strong>Age:</strong>
-                ${escapeHTML(age)}
-            </p>
+            <div class="popup-field">
+                <span class="popup-label">STATUS</span>
+                <span class="popup-value">${value(properties.case_status)}</span>
+            </div>
 
-            <p>
-                <strong>Location:</strong>
-                ${escapeHTML(location)}
-            </p>
+            <div class="popup-field">
+                <span class="popup-label">LAST KNOWN LOCATION</span>
+                <span class="popup-value">
+                    ${value(properties.geocoded_address)}
+                </span>
+            </div>
+
+            <div class="popup-field">
+                <span class="popup-label">LAST SEEN</span>
+                <span class="popup-value">
+                    ${value(properties.date_last_seen)}
+                </span>
+            </div>
+
+            <div class="popup-field">
+                <span class="popup-label">AGE</span>
+                <span class="popup-value">
+                    ${value(properties.age_at_event)}
+                </span>
+            </div>
+
+            <div class="popup-field">
+                <span class="popup-label">CASE SUMMARY</span>
+                <span class="popup-value">
+                    ${value(properties.case_summary)}
+                </span>
+            </div>
 
             ${
-                summary
+                properties.source_link
                     ? `
-                        <p>
-                            ${escapeHTML(summary)}
-                        </p>
-                    `
-                    : ""
-            }
-
-            ${
-                sourceLink
-                    ? `
-                        <a
-                            href="${escapeHTML(sourceLink)}"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            VIEW SOURCE →
-                        </a>
+                    <a
+                        class="popup-link"
+                        href="${properties.source_link}"
+                        target="_blank"
+                    >
+                        VIEW SOURCE →
+                    </a>
                     `
                     : ""
             }
@@ -316,7 +311,6 @@ function createPopupHTML(properties) {
         </div>
     `;
 }
-
 
 /* =========================================
    LOAD CASE CSV
