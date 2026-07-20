@@ -441,7 +441,7 @@ function addCaseLayer() {
             "interpolate",
             ["linear"],
             ["zoom"],
-            8, 2.5,
+            8, 2.5
             12, 3.5
             16, 4.5
         ],
