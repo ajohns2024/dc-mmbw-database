@@ -23,7 +23,7 @@ function initializeMap() {
 
     map = new mapboxgl.Map({
         container: "map",
-        style: "mapbox://styles/mapbox/navigation-night-v1",
+        style: "mapbox://styles/mapbox/dark-v11",
         center: [-77.0369, 38.9072],
         zoom: 10.15,
         minZoom: 8,
@@ -480,15 +480,22 @@ function addCaseLayer() {
         type: "circle",
         source: "case-points",
 
-      paint: {
+     paint: {
     "circle-radius": [
         "interpolate",
         ["linear"],
         ["zoom"],
-        8, 3,
-        12, 4,
-        16, 6
+        8, 2.5,
+        12, 3.5,
+        16, 5
     ],
+
+    "circle-color": "#7a1538",
+    "circle-opacity": 0.92,
+    "circle-stroke-color": "#2b0613",
+    "circle-stroke-width": 1.4,
+    "circle-blur": 0.15
+}
 
     "circle-color": "#5d0018",
     "circle-opacity": 0.9,
