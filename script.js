@@ -1,21 +1,46 @@
 "use strict";
 
-/* =========================================
-   MAPBOX TOKEN
-========================================= */
+mapboxgl.accessToken =
+    "pk.eyJ1IjoiYXZlcnllam9obnMiLCJhIjoiY21uNmo3YnNiMDZrYTJwcTFwcHRzOG83NCJ9.aFx3CE9PzNOHSiDO7cEf2g";
 
-mapboxgl.accessToken = "pk.eyJ1IjoiYXZlcnllam9obnMiLCJhIjoiY21uNmo3YnNiMDZrYTJwcTFwcHRzOG83NCJ9.aFx3CE9PzNOHSiDO7cEf2g";
+function initializeMap() {
+    if (!mapboxgl.accessToken) {
+        mapLoading.textContent =
+            "ADD MAPBOX PUBLIC ACCESS TOKEN";
 
-/* =========================================
-   FILE PATHS
-========================================= */
+        searchStatus.textContent =
+            "The map requires a Mapbox public access token.";
 
-const HIGHWAY_DATA_PATH =
-    "data/05_web_exports/Interstate_Highways.geojson";
+        return;
+    }
 
-const CASE_DATA_PATH =
-    "data/05_web_exports/case_map_points.csv";
+    map = new mapboxgl.Map({
+        container: "map",
+        style: "mapbox://styles/mapbox/light-v11",
+        center: [-77.0369, 38.9072],
+        zoom: 10.15,
+        minZoom: 8,
+        maxZoom: 18,
+        pitch: 0,
+        bearing: 0
+    });
 
+    map.addControl(
+        new mapboxgl.NavigationControl({
+            showCompass: false
+        }),
+        "top-right"
+    );
+
+    map.on("load", () => {
+        addHighwayLayer();
+        loadCaseData();
+    });
+
+    map.on("error", (event) => {
+        console.error("Mapbox error:", event.error);
+    });
+}
 
 /* =========================================
    PAGE ELEMENTS
