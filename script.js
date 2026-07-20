@@ -359,7 +359,6 @@ function loadCaseData() {
     });
 }
 
-
 /* =========================================
    MAP LAYERS
 ========================================= */
@@ -536,69 +535,8 @@ function addCaseLayer() {
 
 
 /* =========================================
-   INITIALIZE MAP
-========================================= */
-
-function initializeMap() {
-
-    if (!mapboxgl.accessToken) {
-        mapLoading.textContent =
-            "Upload Mapbox Public Access Token";
-
-        searchStatus.textContent =
-            "The map requires a Mapbox public access token.";
-
-        return;
-    }
-
-    map = new mapboxgl.Map({
-        container: "map",
-        style: "mapbox://styles/mapbox/light-v11",
-        center: [-77.0369, 38.9072],
-        zoom: 10.15,
-        minZoom: 8,
-        maxZoom: 18
-    });
-
-    // ...
-}
-
-    map = new mapboxgl.Map({
-        container: "map",
-        style: "mapbox://styles/mapbox/light-v11",
-        center: [-77.0369, 38.9072],
-        zoom: 10.15,
-        minZoom: 8,
-        maxZoom: 18,
-        pitch: 0,
-        bearing: 0
-    });
-
-
-    map.addControl(
-        new mapboxgl.NavigationControl({
-            showCompass: false
-        }),
-        "top-right"
-    );
-
-
-    map.on("load", () => {
-        addHighwayLayer();
-        loadCaseData();
-    });
-
-
-    map.on("error", (event) => {
-        console.error("Mapbox error:", event.error);
-    });
-}
-
-
-/* =========================================
    SEARCH EVENTS
 ========================================= */
-
 searchButton.addEventListener("click", applyFilters);
 
 searchInput.addEventListener("keydown", (event) => {
@@ -610,10 +548,5 @@ searchInput.addEventListener("keydown", (event) => {
 searchInput.addEventListener("input", applyFilters);
 caseTypeFilter.addEventListener("change", applyFilters);
 yearFilter.addEventListener("change", applyFilters);
-
-
-/* =========================================
-   START WEBSITE
-========================================= */
 
 initializeMap();
