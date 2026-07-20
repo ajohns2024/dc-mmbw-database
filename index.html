@@ -52,370 +52,428 @@
     <!-- =========================================
          PAGE CONTENT
     ========================================== -->
+<main class="database-shell">
 
-    <main class="page-shell">
+    <!-- =========================================
+         DATABASE IDENTITY
+    ========================================== -->
 
-        <div class="top-row">
+    <section class="database-identity">
 
-            <p class="database-abbreviation">
-                MMBDB
+        <div class="identity-copy">
+
+            <p class="system-label">
+                PUBLIC FORENSIC DATABASE / WASHINGTON, D.C.
             </p>
 
-            <a href="#advanced-search" class="advanced-search-link">
-                ADVANCED SEARCH TOOL
+            <h1>
+                WASHINGTON D.C. DATABASE FOR MISSING AND MURDERED BLACK WOMEN
+            </h1>
+
+            <p class="identity-subtitle">
+                A public case database and spatial research platform documenting
+                missing and murdered Black women and girls in Washington, D.C.
+            </p>
+
+        </div>
+
+
+        <div class="system-status">
+
+            <span class="status-indicator"></span>
+
+            <div>
+                <p class="status-label">DATABASE STATUS</p>
+                <p class="status-value">PUBLIC ACCESS</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         NAVIGATION
+    ========================================== -->
+
+    <nav class="database-navigation" aria-label="Primary navigation">
+
+        <a href="index.html" class="active">
+            DATABASE
+        </a>
+
+        <a href="cases.html">
+            CASE DIRECTORY
+        </a>
+
+        <a href="#interactive-map">
+            INTERACTIVE MAP
+        </a>
+
+        <a href="research.html">
+            RESEARCH
+        </a>
+
+        <a href="about.html">
+            ABOUT
+        </a>
+
+    </nav>
+
+
+    <!-- =========================================
+         ABOUT + MAP
+    ========================================== -->
+
+    <section class="database-overview">
+
+        <!-- LEFT COLUMN -->
+
+        <article class="about-panel">
+
+            <div class="section-heading">
+
+                <p class="section-number">
+                    01
+                </p>
+
+                <div>
+                    <p class="section-label">
+                        RESEARCH INITIATIVE
+                    </p>
+
+                    <h2>
+                        ABOUT DEADLINING
+                    </h2>
+                </div>
+
+            </div>
+
+
+            <div class="about-introduction">
+
+                <p class="large-statement">
+                    As neighborhoods transform, Black women become both
+                    targets and warnings.
+                </p>
+
+                <p>
+                    Their disappearances and murders occur within fragmented
+                    systems of reporting, investigation, jurisdiction, and
+                    public memory.
+                </p>
+
+            </div>
+
+
+            <div class="research-block">
+
+                <p class="block-label">
+                    THE FINDING
+                </p>
+
+                <p class="finding-copy">
+                    Documented cases cluster within liminal zones of urban
+                    redevelopment and jurisdictional invisibility.
+                </p>
+
+            </div>
+
+
+            <div class="research-block">
+
+                <p class="block-label">
+                    GEOGRAPHY OF INVISIBILITY
+                </p>
+
+                <p>
+                    The highest documented case density occurred along
+                    Suitland Parkway, where redevelopment is transforming a
+                    corridor long shaped by displacement.
+                </p>
+
+            </div>
+
+
+            <div class="research-block">
+
+                <p class="block-label">
+                    WHY THIS DATABASE EXISTS
+                </p>
+
+                <p>
+                    To close critical gaps in missing and murdered persons data
+                    through a publicly accessible forensic database supporting
+                    investigation, research, and informed public awareness.
+                </p>
+
+            </div>
+
+
+            <a href="about.html" class="text-link">
+                READ ABOUT THE PROJECT
+                <span>→</span>
+            </a>
+
+        </article>
+
+
+        <!-- RIGHT COLUMN -->
+
+        <section
+            class="map-panel"
+            id="interactive-map"
+            aria-labelledby="map-title"
+        >
+
+            <div class="map-toolbar">
+
+                <div>
+
+                    <p class="section-label">
+                        SPATIAL CASE DATABASE
+                    </p>
+
+                    <h2 id="map-title">
+                        INTERACTIVE CASE MAP
+                    </h2>
+
+                </div>
+
+
+                <div class="map-legend">
+
+                    <span>
+                        <span class="legend-dot"></span>
+                        CASE
+                    </span>
+
+                    <span>
+                        <span class="legend-line"></span>
+                        INTERSTATE
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="map-frame">
+
+                <div
+                    id="map"
+                    aria-label="Interactive map showing documented case locations and interstate highways"
+                ></div>
+
+                <div class="map-loading" id="map-loading">
+                    LOADING SPATIAL DATA
+                </div>
+
+                <div class="map-coordinate-label">
+                    38.9072° N / 77.0369° W
+                </div>
+
+            </div>
+
+
+            <div class="map-footer">
+
+                <p>
+                    Select a point to view available case information.
+                </p>
+
+                <a href="map.html">
+                    OPEN FULL MAP →
+                </a>
+
+            </div>
+
+        </section>
+
+    </section>
+
+
+    <!-- =========================================
+         STATISTICS
+    ========================================== -->
+
+    <section class="statistics-strip">
+
+        <article class="statistic">
+
+            <p class="stat-value">
+                186
+            </p>
+
+            <p class="stat-label">
+                DOCUMENTED CASES
+            </p>
+
+        </article>
+
+
+        <article class="statistic">
+
+            <p class="stat-value">
+                1961–2025
+            </p>
+
+            <p class="stat-label">
+                YEARS DOCUMENTED
+            </p>
+
+        </article>
+
+
+        <article class="statistic">
+
+            <p class="stat-value">
+                70.5%
+            </p>
+
+            <p class="stat-label">
+                WITHIN 2 KM OF A HIGHWAY
+            </p>
+
+        </article>
+
+
+        <article class="statistic">
+
+            <p class="stat-value">
+                7.46
+            </p>
+
+            <p class="stat-label">
+                CASES PER KM / SUITLAND PARKWAY
+            </p>
+
+        </article>
+
+    </section>
+
+
+    <!-- =========================================
+         DATABASE SEARCH
+    ========================================== -->
+
+    <section
+        class="database-search"
+        id="advanced-search"
+        aria-labelledby="search-title"
+    >
+
+        <div class="search-header">
+
+            <div class="section-heading">
+
+                <p class="section-number">
+                    02
+                </p>
+
+                <div>
+
+                    <p class="section-label">
+                        CASE RECORDS
+                    </p>
+
+                    <h2 id="search-title">
+                        SEARCH THE DATABASE
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <a href="cases.html" class="text-link">
+                VIEW CASE DIRECTORY
+                <span>→</span>
             </a>
 
         </div>
 
 
-        <section class="database-title">
+        <div class="search-interface">
 
-            <h1>
-                WASHINGTON D.C. DATABASE FOR MISSING AND MURDERED BLACK WOMEN:
-            </h1>
+            <div class="primary-search">
 
-        </section>
+                <label for="case-search">
+                    NAME, CASE ID, YEAR, OR LOCATION
+                </label>
 
+                <div class="search-input-row">
 
-        <!-- =====================================
-             NAVIGATION
-        ====================================== -->
+                    <input
+                        type="search"
+                        id="case-search"
+                        placeholder="Search documented case records"
+                        autocomplete="off"
+                    >
 
-        <nav class="main-navigation" aria-label="Primary navigation">
+                    <button type="button" id="search-button">
+                        SEARCH DATABASE
+                    </button>
 
-            <a href="index.html" class="active">
-                DATABASE
-            </a>
+                </div>
 
-            <a href="about.html">
-                ABOUT
-            </a>
+            </div>
 
-            <a href="missing-persons.html">
-                MISSING PERSONS
-            </a>
 
-            <a href="unidentified-persons.html">
-                UNIDENTIFIED PERSONS
-            </a>
+            <div class="database-filters">
 
-        </nav>
+                <div class="filter-group">
 
-
-        <!-- =====================================
-             TWO-COLUMN PAGE
-        ====================================== -->
-
-        <section class="homepage-grid">
-
-            <!-- LEFT SIDE -->
-
-            <article class="research-copy">
-
-                <section class="copy-section">
-
-                    <h2>ABOUT “DEADLINING”:</h2>
-
-                    <p>
-                        As neighborhoods transform, Black female bodies become
-                        both targets and warnings.
-                    </p>
-
-                    <p>
-                        Their murders are simultaneously rising in number yet
-                        falling in priority.
-                    </p>
-
-                </section>
-
-
-                <section class="copy-section">
-
-                    <h2>THE NUMBERS:</h2>
-
-                    <div class="number-list">
-
-                        <div class="number-item">
-
-                            <span class="number-icon pin-icon">
-                                ●
-                            </span>
-
-                            <p>
-                                <strong>24% Closer:</strong>
-                                Average proximity to interstate highways.
-                            </p>
-
-                        </div>
-
-
-                        <div class="number-item">
-
-                            <span class="number-icon road-icon">
-                                ═
-                            </span>
-
-                            <p>
-                                <strong>70.5%:</strong>
-                                Cases occurred within <strong>2 km</strong>
-                                of a major highway.
-                            </p>
-
-                        </div>
-
-
-                        <div class="number-item">
-
-                            <span class="number-icon chart-icon">
-                                ▥
-                            </span>
-
-                            <p>
-                                <strong>7.46 Cases/km:</strong>
-                                Highest corridor density:
-                                <strong>Suitland Parkway.</strong>
-                            </p>
-
-                        </div>
-
-
-                        <div class="number-item">
-
-                            <span class="number-icon pin-icon">
-                                ●
-                            </span>
-
-                            <p>
-                                <strong>64.5%:</strong>
-                                Cases clustered near
-                                <strong>I-395, I-295, and Suitland Parkway.</strong>
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                </section>
-
-
-                <section class="copy-section">
-
-                    <h2>GEOGRAPHY OF INVISIBILITY:</h2>
-
-                    <p>
-                        The highest documented case density occurred along
-                        Suitland Parkway, where a new era of redevelopment is
-                        transforming a corridor long shaped by displacement.
-                    </p>
-
-                </section>
-
-
-                <section class="copy-section">
-
-                    <h2>THE FINDING:</h2>
-
-                    <p class="finding-statement">
-                        DOCUMENTED CASES CLUSTER WITHIN LIMINAL ZONES OF URBAN
-                        “REDEVELOPMENT” &amp; JURISDICTIONAL INVISIBILITY.
-                    </p>
-
-                </section>
-
-
-                <section class="copy-section">
-
-                    <h2>WHY WE EXIST:</h2>
-
-                    <p>
-                        To close critical gaps in missing and murdered persons
-                        data by creating a publicly accessible forensic database
-                        that supports investigations and advances geospatial
-                        research into the structural conditions that shape
-                        victimization.
-                    </p>
-
-                </section>
-
-            </article>
-
-
-            <!-- RIGHT SIDE -->
-
-            <aside class="database-panel">
-
-                <!-- SEARCH -->
-
-                <section
-                    class="search-panel"
-                    id="advanced-search"
-                    aria-labelledby="search-heading"
-                >
-
-                    <div class="panel-heading">
-
-                        <div>
-
-                            <p class="panel-label">
-                                DATABASE SEARCH
-                            </p>
-
-                            <h2 id="search-heading">
-                                ADVANCED SEARCH TOOL
-                            </h2>
-
-                        </div>
-
-                        <a href="cases.html">
-                            BROWSE ALL CASES
-                        </a>
-
-                    </div>
-
-
-                    <label for="case-search" class="input-label">
-                        Search by name, case ID, year, or location
+                    <label for="case-type-filter">
+                        CASE TYPE
                     </label>
 
+                    <select id="case-type-filter">
 
-                    <div class="search-row">
+                        <option value="">
+                            All case types
+                        </option>
 
-                        <input
-                            type="search"
-                            id="case-search"
-                            placeholder="Enter search term"
-                            autocomplete="off"
-                        >
+                    </select>
 
-                        <button type="button" id="search-button">
-                            SEARCH
-                        </button>
-
-                    </div>
+                </div>
 
 
-                    <div class="filter-row">
+                <div class="filter-group">
 
-                        <div class="filter-group">
+                    <label for="year-filter">
+                        YEAR
+                    </label>
 
-                            <label for="case-type-filter">
-                                Case type
-                            </label>
+                    <select id="year-filter">
 
-                            <select id="case-type-filter">
+                        <option value="">
+                            All years
+                        </option>
 
-                                <option value="">
-                                    All case types
-                                </option>
+                    </select>
 
-                            </select>
+                </div>
 
-                        </div>
+            </div>
 
-
-                        <div class="filter-group">
-
-                            <label for="year-filter">
-                                Year
-                            </label>
-
-                            <select id="year-filter">
-
-                                <option value="">
-                                    All years
-                                </option>
-
-                            </select>
-
-                        </div>
-
-                    </div>
+        </div>
 
 
-                    <p
-                        class="search-status"
-                        id="search-status"
-                        aria-live="polite"
-                    >
-                        Loading documented cases...
-                    </p>
+        <div class="search-results-status">
 
-                </section>
+            <span class="status-indicator"></span>
 
+            <p id="search-status" aria-live="polite">
+                Loading documented case records...
+            </p>
 
-                <!-- MAP -->
+        </div>
 
-                <section class="map-panel">
+    </section>
 
-                    <div class="map-heading">
-
-                        <div>
-
-                            <p class="panel-label">
-                                SPATIAL DATABASE
-                            </p>
-
-                            <h2>
-                                INTERACTIVE CASE MAP
-                            </h2>
-
-                        </div>
-
-
-                        <div class="map-legend">
-
-                            <span>
-                                <span class="legend-dot"></span>
-                                CASE LOCATION
-                            </span>
-
-                            <span>
-                                <span class="legend-line"></span>
-                                INTERSTATE
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="map-frame">
-
-                        <div
-                            id="map"
-                            aria-label="Interactive map showing documented cases and interstate highways"
-                        ></div>
-
-                        <div class="map-loading" id="map-loading">
-                            LOADING MAP DATA
-                        </div>
-
-                        <div class="map-location-label">
-                            WASHINGTON, D.C.
-                        </div>
-
-                    </div>
-
-
-                    <div class="map-footer">
-
-                        <p>
-                            Select a case marker to view available information.
-                        </p>
-
-                        <a href="map.html">
-                            OPEN FULL MAP →
-                        </a>
-
-                    </div>
-
-                </section>
-
-            </aside>
-
-        </section>
-
-    </main>
+</main>
+    
 
 
     <!-- =========================================
