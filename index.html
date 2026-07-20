@@ -3,20 +3,471 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MMBDB</title>
 
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="A public forensic database documenting missing and murdered Black women in Washington, D.C."
+    >
+
+    <title>
+        Washington D.C. Database for Missing and Murdered Black Women
+    </title>
+
+    <!-- Main stylesheet -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Mapbox stylesheet -->
+    <link
+        href="https://api.mapbox.com/mapbox-gl-js/v3.25.0/mapbox-gl.css"
+        rel="stylesheet"
+    >
 </head>
 
 <body>
 
-    <header>
-        <img
-            src="assets/header.png"
-            alt="MMBDB Header"
-            class="header-image">
+    <!-- =========================================
+         HEADER IMAGE
+    ========================================== -->
+
+    <header class="site-header">
+
+        <a href="index.html" aria-label="Return to homepage">
+
+            <img
+                src="assets/header.png"
+                alt="MMBDB header"
+                class="header-image"
+            >
+
+        </a>
+
     </header>
+
+
+    <!-- =========================================
+         PAGE CONTENT
+    ========================================== -->
+
+    <main class="page-shell">
+
+        <div class="top-row">
+
+            <p class="database-abbreviation">
+                MMBDB
+            </p>
+
+            <a href="#advanced-search" class="advanced-search-link">
+                ADVANCED SEARCH TOOL
+            </a>
+
+        </div>
+
+
+        <section class="database-title">
+
+            <h1>
+                WASHINGTON D.C. DATABASE FOR MISSING AND MURDERED BLACK WOMEN:
+            </h1>
+
+        </section>
+
+
+        <!-- =====================================
+             NAVIGATION
+        ====================================== -->
+
+        <nav class="main-navigation" aria-label="Primary navigation">
+
+            <a href="index.html" class="active">
+                DATABASE
+            </a>
+
+            <a href="about.html">
+                ABOUT
+            </a>
+
+            <a href="missing-persons.html">
+                MISSING PERSONS
+            </a>
+
+            <a href="unidentified-persons.html">
+                UNIDENTIFIED PERSONS
+            </a>
+
+        </nav>
+
+
+        <!-- =====================================
+             TWO-COLUMN PAGE
+        ====================================== -->
+
+        <section class="homepage-grid">
+
+            <!-- LEFT SIDE -->
+
+            <article class="research-copy">
+
+                <section class="copy-section">
+
+                    <h2>ABOUT “DEADLINING”:</h2>
+
+                    <p>
+                        As neighborhoods transform, Black female bodies become
+                        both targets and warnings.
+                    </p>
+
+                    <p>
+                        Their murders are simultaneously rising in number yet
+                        falling in priority.
+                    </p>
+
+                </section>
+
+
+                <section class="copy-section">
+
+                    <h2>THE NUMBERS:</h2>
+
+                    <div class="number-list">
+
+                        <div class="number-item">
+
+                            <span class="number-icon pin-icon">
+                                ●
+                            </span>
+
+                            <p>
+                                <strong>24% Closer:</strong>
+                                Average proximity to interstate highways.
+                            </p>
+
+                        </div>
+
+
+                        <div class="number-item">
+
+                            <span class="number-icon road-icon">
+                                ═
+                            </span>
+
+                            <p>
+                                <strong>70.5%:</strong>
+                                Cases occurred within <strong>2 km</strong>
+                                of a major highway.
+                            </p>
+
+                        </div>
+
+
+                        <div class="number-item">
+
+                            <span class="number-icon chart-icon">
+                                ▥
+                            </span>
+
+                            <p>
+                                <strong>7.46 Cases/km:</strong>
+                                Highest corridor density:
+                                <strong>Suitland Parkway.</strong>
+                            </p>
+
+                        </div>
+
+
+                        <div class="number-item">
+
+                            <span class="number-icon pin-icon">
+                                ●
+                            </span>
+
+                            <p>
+                                <strong>64.5%:</strong>
+                                Cases clustered near
+                                <strong>I-395, I-295, and Suitland Parkway.</strong>
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <section class="copy-section">
+
+                    <h2>GEOGRAPHY OF INVISIBILITY:</h2>
+
+                    <p>
+                        The highest documented case density occurred along
+                        Suitland Parkway, where a new era of redevelopment is
+                        transforming a corridor long shaped by displacement.
+                    </p>
+
+                </section>
+
+
+                <section class="copy-section">
+
+                    <h2>THE FINDING:</h2>
+
+                    <p class="finding-statement">
+                        DOCUMENTED CASES CLUSTER WITHIN LIMINAL ZONES OF URBAN
+                        “REDEVELOPMENT” &amp; JURISDICTIONAL INVISIBILITY.
+                    </p>
+
+                </section>
+
+
+                <section class="copy-section">
+
+                    <h2>WHY WE EXIST:</h2>
+
+                    <p>
+                        To close critical gaps in missing and murdered persons
+                        data by creating a publicly accessible forensic database
+                        that supports investigations and advances geospatial
+                        research into the structural conditions that shape
+                        victimization.
+                    </p>
+
+                </section>
+
+            </article>
+
+
+            <!-- RIGHT SIDE -->
+
+            <aside class="database-panel">
+
+                <!-- SEARCH -->
+
+                <section
+                    class="search-panel"
+                    id="advanced-search"
+                    aria-labelledby="search-heading"
+                >
+
+                    <div class="panel-heading">
+
+                        <div>
+
+                            <p class="panel-label">
+                                DATABASE SEARCH
+                            </p>
+
+                            <h2 id="search-heading">
+                                ADVANCED SEARCH TOOL
+                            </h2>
+
+                        </div>
+
+                        <a href="cases.html">
+                            BROWSE ALL CASES
+                        </a>
+
+                    </div>
+
+
+                    <label for="case-search" class="input-label">
+                        Search by name, case ID, year, or location
+                    </label>
+
+
+                    <div class="search-row">
+
+                        <input
+                            type="search"
+                            id="case-search"
+                            placeholder="Enter search term"
+                            autocomplete="off"
+                        >
+
+                        <button type="button" id="search-button">
+                            SEARCH
+                        </button>
+
+                    </div>
+
+
+                    <div class="filter-row">
+
+                        <div class="filter-group">
+
+                            <label for="case-type-filter">
+                                Case type
+                            </label>
+
+                            <select id="case-type-filter">
+
+                                <option value="">
+                                    All case types
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="filter-group">
+
+                            <label for="year-filter">
+                                Year
+                            </label>
+
+                            <select id="year-filter">
+
+                                <option value="">
+                                    All years
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <p
+                        class="search-status"
+                        id="search-status"
+                        aria-live="polite"
+                    >
+                        Loading documented cases...
+                    </p>
+
+                </section>
+
+
+                <!-- MAP -->
+
+                <section class="map-panel">
+
+                    <div class="map-heading">
+
+                        <div>
+
+                            <p class="panel-label">
+                                SPATIAL DATABASE
+                            </p>
+
+                            <h2>
+                                INTERACTIVE CASE MAP
+                            </h2>
+
+                        </div>
+
+
+                        <div class="map-legend">
+
+                            <span>
+                                <span class="legend-dot"></span>
+                                CASE LOCATION
+                            </span>
+
+                            <span>
+                                <span class="legend-line"></span>
+                                INTERSTATE
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="map-frame">
+
+                        <div
+                            id="map"
+                            aria-label="Interactive map showing documented cases and interstate highways"
+                        ></div>
+
+                        <div class="map-loading" id="map-loading">
+                            LOADING MAP DATA
+                        </div>
+
+                        <div class="map-location-label">
+                            WASHINGTON, D.C.
+                        </div>
+
+                    </div>
+
+
+                    <div class="map-footer">
+
+                        <p>
+                            Select a case marker to view available information.
+                        </p>
+
+                        <a href="map.html">
+                            OPEN FULL MAP →
+                        </a>
+
+                    </div>
+
+                </section>
+
+            </aside>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <footer class="site-footer">
+
+        <div class="footer-inner">
+
+            <div>
+
+                <p class="footer-name">
+                    MMBDB
+                </p>
+
+                <p>
+                    Washington D.C. Database for Missing and Murdered Black Women
+                </p>
+
+                <p class="footer-subtitle">
+                    A DEADLINING Research Initiative
+                </p>
+
+            </div>
+
+
+            <nav aria-label="Footer navigation">
+
+                <a href="about.html">ABOUT</a>
+
+                <a href="research.html">RESEARCH</a>
+
+                <a href="methodology.html">METHODOLOGY</a>
+
+                <a href="contact.html">CONTACT</a>
+
+            </nav>
+
+        </div>
+
+    </footer>
+
+
+    <!-- CSV parser -->
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.5.3/papaparse.min.js"></script>
+
+    <!-- Mapbox -->
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.25.0/mapbox-gl.js"></script>
+
+    <!-- Website JavaScript -->
+    <script src="script.js"></script>
 
 </body>
 
