@@ -1,46 +1,18 @@
-<!-- Professional database fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link
-    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet"
->
-
-<!-- Main stylesheet -->
-<link rel="stylesheet" href="style.css">
-
 /* =========================================
-   GLOBAL
+   PAGE FOUNDATION
 ========================================= */
-/* =========================================================
-   ROOT
-========================================================= */
 
 :root {
     --black: #050505;
-    --black-soft: #0b0b0b;
-    --panel: #101010;
-    --panel-light: #151515;
-
+    --panel: #0c0c0c;
+    --panel-raised: #111111;
     --white: #f4f4f1;
-    --white-soft: #d4d4cf;
-    --muted: #8d8d87;
-
-    --border: #2c2c2a;
-    --border-light: #3d3d39;
-
-    --red: #d12632;
+    --white-soft: #c9c9c4;
+    --muted: #85857f;
+    --border: #2c2c29;
+    --border-light: #464640;
+    --red: #d62b38;
     --green: #789b71;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
 }
 
 body {
@@ -48,120 +20,88 @@ body {
     background: var(--black);
     color: var(--white);
     font-family: "Inter", Arial, sans-serif;
-    line-height: 1.55;
 }
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-button,
-input,
-select {
-    font: inherit;
-}
-
-
-/* =========================================================
-   HEADER
-========================================================= */
-
-.site-header {
-    width: 100%;
-    background: #000;
-    border-bottom: 1px solid var(--border);
-}
-
-.site-header a {
-    display: block;
-    width: 100%;
-}
-
-.header-image {
-    display: block;
-    width: 100%;
-    height: auto;
-    max-height: none;
-}
-
-
-/* =========================================================
-   MAIN DATABASE SHELL
-========================================================= */
 
 .database-shell {
-    width: min(1540px, calc(100% - 56px));
+    width: min(1500px, calc(100% - 64px));
     margin: 0 auto;
-    padding: 48px 0 90px;
+    padding: 50px 0 100px;
 }
 
 
-/* =========================================================
-   DATABASE IDENTITY
-========================================================= */
+/* =========================================
+   HERO
+========================================= */
 
-.database-identity {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 80px;
-    padding: 0 0 36px;
+.database-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    gap: 70px;
+    padding-bottom: 38px;
 }
 
-.identity-copy {
+.hero-copy {
     max-width: 1050px;
 }
 
 .system-label,
-.section-label,
-.block-label,
-.status-label,
+.section-kicker,
+.card-label,
 .stat-label,
-.primary-search label,
-.filter-group label {
+.search-layout label,
+.database-status p {
     font-family: "IBM Plex Mono", monospace;
-    font-size: 0.67rem;
+    font-size: 0.66rem;
     font-weight: 500;
-    line-height: 1.4;
     letter-spacing: 0.12em;
 }
 
 .system-label,
-.section-label,
-.status-label {
+.section-kicker,
+.database-status p {
     margin: 0 0 10px;
     color: var(--muted);
 }
 
-.database-identity h1 {
+.database-hero h1 {
     max-width: 1050px;
     margin: 0;
-    font-size: clamp(2rem, 4vw, 4.7rem);
+    font-size: clamp(2.5rem, 5vw, 5.25rem);
     font-weight: 500;
-    line-height: 0.98;
-    letter-spacing: -0.045em;
+    line-height: 0.96;
+    letter-spacing: -0.055em;
 }
 
-.identity-subtitle {
-    max-width: 790px;
-    margin: 24px 0 0;
+.hero-description {
+    max-width: 760px;
+    margin: 25px 0 0;
     color: var(--white-soft);
-    font-size: 1rem;
-    line-height: 1.65;
+    font-size: 0.98rem;
+    line-height: 1.7;
 }
 
-.system-status {
+.database-status {
     display: flex;
     align-items: center;
-    gap: 11px;
-    min-width: 175px;
-    padding: 14px 0;
+    gap: 12px;
+    min-width: 180px;
+    padding: 15px 0;
     border-top: 1px solid var(--border-light);
     border-bottom: 1px solid var(--border-light);
 }
 
-.status-indicator {
+.database-status p {
+    margin: 0 0 3px;
+}
+
+.database-status strong {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.72rem;
+    font-weight: 500;
+}
+
+.status-dot {
     display: inline-block;
     width: 7px;
     height: 7px;
@@ -170,41 +110,26 @@ select {
     border-radius: 50%;
 }
 
-.status-label {
-    margin: 0 0 2px;
-}
 
-.status-value {
-    margin: 0;
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.72rem;
-}
-
-
-/* =========================================================
+/* =========================================
    NAVIGATION
-========================================================= */
+========================================= */
 
 .database-navigation {
     display: flex;
     align-items: center;
-    gap: 0;
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
 }
 
 .database-navigation a {
     position: relative;
-    padding: 19px 32px 18px 0;
-    margin-right: 38px;
+    margin-right: 42px;
+    padding: 18px 0;
     color: var(--muted);
     font-family: "IBM Plex Mono", monospace;
-    font-size: 0.68rem;
-    font-weight: 500;
+    font-size: 0.67rem;
     letter-spacing: 0.08em;
-    transition:
-        color 160ms ease,
-        border-color 160ms ease;
 }
 
 .database-navigation a:hover,
@@ -215,7 +140,7 @@ select {
 .database-navigation a.active::after {
     content: "";
     position: absolute;
-    right: 32px;
+    right: 0;
     bottom: -1px;
     left: 0;
     height: 2px;
@@ -223,137 +148,51 @@ select {
 }
 
 
-/* =========================================================
-   ABOUT + MAP LAYOUT
-========================================================= */
+/* =========================================
+   SECTION TOOLBAR
+========================================= */
 
-.database-overview {
-    display: grid;
-    grid-template-columns: minmax(330px, 0.72fr) minmax(650px, 1.65fr);
-    gap: 28px;
-    padding: 28px 0;
+.section-toolbar {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 22px 25px;
+    border-bottom: 1px solid var(--border);
 }
 
-.about-panel,
-.map-panel,
-.database-search {
+.section-toolbar h2 {
+    margin: 0;
+    font-size: 1.02rem;
+    font-weight: 500;
+}
+
+.toolbar-link {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.64rem;
+    letter-spacing: 0.07em;
+}
+
+
+/* =========================================
+   LARGE MAP
+========================================= */
+
+.primary-map-section {
+    margin-top: 28px;
     background: var(--panel);
     border: 1px solid var(--border);
 }
 
-.about-panel {
-    display: flex;
-    flex-direction: column;
-    padding: 30px;
-}
-
-.section-heading {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-}
-
-.section-number {
-    margin: 2px 0 0;
-    color: var(--muted);
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.65rem;
-}
-
-.section-heading h2,
-.map-toolbar h2 {
-    margin: 0;
-    font-size: 1rem;
-    font-weight: 500;
-    line-height: 1.2;
-    letter-spacing: -0.01em;
-}
-
-.about-introduction {
-    padding: 35px 0 28px;
-    border-bottom: 1px solid var(--border);
-}
-
-.large-statement {
-    margin: 0 0 22px;
-    font-size: clamp(1.35rem, 2vw, 2.15rem);
-    font-weight: 400;
-    line-height: 1.18;
-    letter-spacing: -0.025em;
-}
-
-.about-introduction > p:last-child,
-.research-block p,
-.map-footer p {
-    color: var(--white-soft);
-}
-
-.research-block {
-    padding: 23px 0;
-    border-bottom: 1px solid var(--border);
-}
-
-.block-label {
-    margin: 0 0 9px;
-    color: var(--muted);
-}
-
-.research-block p:last-child {
-    margin: 0;
-    font-size: 0.88rem;
-    line-height: 1.62;
-}
-
-.research-block .finding-copy {
-    color: var(--white);
-    font-size: 0.98rem;
-    font-weight: 500;
-}
-
-.text-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    margin-top: auto;
-    padding-top: 24px;
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.67rem;
-    letter-spacing: 0.07em;
-}
-
-.text-link span {
-    font-size: 1rem;
-}
-
-
-/* =========================================================
-   MAP
-========================================================= */
-
-.map-panel {
-    min-width: 0;
-}
-
-.map-toolbar {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 24px;
-    padding: 22px 24px;
-    border-bottom: 1px solid var(--border);
-}
-
 .map-legend {
     display: flex;
-    align-items: center;
-    gap: 18px;
+    gap: 20px;
     font-family: "IBM Plex Mono", monospace;
     font-size: 0.59rem;
     letter-spacing: 0.06em;
 }
 
-.map-legend > span {
+.map-legend span {
     display: inline-flex;
     align-items: center;
     gap: 7px;
@@ -368,17 +207,17 @@ select {
 }
 
 .legend-line {
-    width: 23px;
+    width: 24px;
     height: 2px;
     background: var(--green);
 }
 
 .map-frame {
     position: relative;
+    width: 100%;
     height: 660px;
-    min-height: 660px;
+    background: #141414;
     overflow: hidden;
-    background: #181818;
 }
 
 #map {
@@ -392,79 +231,87 @@ select {
     position: absolute;
     top: 50%;
     left: 50%;
-    z-index: 4;
+    z-index: 5;
     transform: translate(-50%, -50%);
     padding: 10px 13px;
     background: rgba(5, 5, 5, 0.92);
     border: 1px solid var(--border-light);
     font-family: "IBM Plex Mono", monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.08em;
+    font-size: 0.64rem;
+    letter-spacing: 0.07em;
 }
 
-.map-coordinate-label {
+.map-location-label {
     position: absolute;
     right: 15px;
     bottom: 15px;
-    z-index: 3;
+    z-index: 4;
     padding: 7px 9px;
-    background: rgba(5, 5, 5, 0.88);
+    background: rgba(5, 5, 5, 0.9);
     border: 1px solid var(--border);
     font-family: "IBM Plex Mono", monospace;
-    font-size: 0.58rem;
-    letter-spacing: 0.06em;
+    font-size: 0.57rem;
 }
 
-.map-footer {
+.map-lower-bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 24px;
-    padding: 16px 22px;
+    gap: 25px;
+    padding: 15px 22px;
     border-top: 1px solid var(--border);
 }
 
-.map-footer p {
+.map-lower-bar p {
     margin: 0;
-    font-size: 0.76rem;
+    color: var(--muted);
+    font-size: 0.75rem;
 }
 
-.map-footer a {
+.map-lower-bar a {
     font-family: "IBM Plex Mono", monospace;
     font-size: 0.63rem;
-    letter-spacing: 0.06em;
 }
 
 
-/* =========================================================
+/* =========================================
    STATISTICS
-========================================================= */
+========================================= */
 
-.statistics-strip {
+.statistics-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    margin-bottom: 28px;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
+    margin: 18px 0 28px;
+    border: 1px solid var(--border);
 }
 
-.statistic {
-    min-height: 145px;
-    padding: 25px 23px;
+.stat-card {
+    position: relative;
+    min-height: 160px;
+    padding: 25px;
+    background: var(--panel);
     border-right: 1px solid var(--border);
 }
 
-.statistic:last-child {
+.stat-card:last-child {
     border-right: 0;
 }
 
-.stat-value {
-    margin: 0 0 18px;
+.stat-index {
+    position: absolute;
+    top: 18px;
+    right: 19px;
+    color: var(--muted);
     font-family: "IBM Plex Mono", monospace;
-    font-size: clamp(1.7rem, 2.8vw, 3.2rem);
-    font-weight: 400;
+    font-size: 0.59rem;
+}
+
+.stat-value {
+    margin: 25px 0 21px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: clamp(2rem, 3vw, 3.5rem);
     line-height: 1;
-    letter-spacing: -0.055em;
+    letter-spacing: -0.06em;
 }
 
 .stat-label {
@@ -474,39 +321,25 @@ select {
 }
 
 
-/* =========================================================
-   SEARCH DATABASE
-========================================================= */
+/* =========================================
+   SEARCH
+========================================= */
 
 .database-search {
-    padding: 30px;
+    background: var(--panel);
+    border: 1px solid var(--border);
 }
 
-.search-header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 40px;
-    padding-bottom: 28px;
-    border-bottom: 1px solid var(--border);
-}
-
-.search-header .text-link {
-    margin-top: 0;
-    padding-top: 0;
-}
-
-.search-interface {
+.search-layout {
     display: grid;
-    grid-template-columns: minmax(420px, 1.6fr) minmax(300px, 0.8fr);
-    gap: 20px;
-    padding: 28px 0 20px;
+    grid-template-columns: minmax(400px, 2fr) 0.65fr 0.65fr;
+    gap: 16px;
+    padding: 25px;
 }
 
-.primary-search label,
-.filter-group label {
+.search-layout label {
     display: block;
-    margin: 0 0 8px;
+    margin-bottom: 8px;
     color: var(--muted);
 }
 
@@ -516,296 +349,283 @@ select {
 }
 
 .search-input-row input,
-.filter-group select {
+.search-filter select {
     width: 100%;
-    background: var(--black-soft);
+    height: 52px;
+    background: var(--black);
     color: var(--white);
     border: 1px solid var(--border-light);
     border-radius: 0;
-    outline: none;
 }
 
 .search-input-row input {
-    height: 52px;
-    padding: 0 16px;
+    padding: 0 15px;
     border-right: 0;
 }
 
-.search-input-row input::placeholder {
-    color: #777771;
-}
-
-.search-input-row input:focus,
-.filter-group select:focus {
-    border-color: var(--white-soft);
-}
-
 .search-input-row button {
-    min-width: 180px;
     height: 52px;
-    padding: 0 24px;
+    padding: 0 28px;
     background: var(--white);
     color: var(--black);
     border: 1px solid var(--white);
-    cursor: pointer;
     font-family: "IBM Plex Mono", monospace;
     font-size: 0.66rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
+    cursor: pointer;
 }
 
-.search-input-row button:hover {
-    background: var(--white-soft);
+.search-filter select {
+    padding: 0 12px;
 }
 
-.database-filters {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-}
-
-.filter-group select {
-    height: 52px;
-    padding: 0 13px;
-}
-
-.search-results-status {
+.search-status-row {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding-top: 17px;
+    margin: 0 25px;
+    padding: 17px 0;
     border-top: 1px solid var(--border);
 }
 
-.search-results-status p {
+.search-status-row p {
     margin: 0;
     color: var(--muted);
     font-family: "IBM Plex Mono", monospace;
-    font-size: 0.65rem;
+    font-size: 0.63rem;
 }
 
 
-/* =========================================================
-   MAPBOX POPUPS
-========================================================= */
+/* =========================================
+   ABOUT SECTION
+========================================= */
 
-.mapboxgl-popup-content {
-    max-width: 310px;
-    padding: 18px;
-    background: #0d0d0d;
-    color: var(--white);
-    border: 1px solid var(--border-light);
-    border-radius: 0;
-    box-shadow: none;
-    font-family: "Inter", sans-serif;
-}
-
-.mapboxgl-popup-tip {
-    border-top-color: #0d0d0d !important;
-    border-bottom-color: #0d0d0d !important;
-}
-
-.mapboxgl-popup-close-button {
-    color: var(--white);
-    font-size: 20px;
-}
-
-.case-popup h3 {
-    margin: 0 0 13px;
-    font-size: 1.05rem;
-    font-weight: 500;
-}
-
-.case-popup p {
-    margin: 7px 0;
-    color: var(--white-soft);
-    font-size: 0.77rem;
-    line-height: 1.5;
-}
-
-.case-popup strong {
-    color: var(--white);
-}
-
-.case-popup a {
-    display: inline-block;
-    margin-top: 10px;
-    padding-bottom: 3px;
-    border-bottom: 1px solid var(--white);
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.62rem;
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-.site-footer {
-    padding: 38px 28px;
-    background: #000;
-    color: var(--white);
+.about-deadlining {
+    margin-top: 90px;
+    padding-top: 42px;
     border-top: 1px solid var(--border);
 }
 
-.footer-inner {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 40px;
-    width: min(1480px, 100%);
-    margin: 0 auto;
+.about-heading {
+    display: grid;
+    grid-template-columns: 0.65fr 1.35fr;
+    column-gap: 70px;
+    margin-bottom: 35px;
 }
 
-.footer-inner p {
-    margin: 4px 0;
-    font-size: 0.74rem;
+.about-heading .section-kicker {
+    grid-column: 1;
 }
 
-.footer-name,
-.footer-inner nav a {
+.about-heading h2 {
+    grid-column: 1;
+    margin: 0;
+    font-size: clamp(2rem, 3vw, 3.4rem);
+    font-weight: 500;
+    letter-spacing: -0.045em;
+}
+
+.about-lead {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    max-width: 720px;
+    margin: 0;
+    color: var(--white-soft);
+    font-size: 1.15rem;
+    line-height: 1.7;
+}
+
+.about-card-grid {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr 1fr;
+    gap: 16px;
+}
+
+.about-card {
+    position: relative;
+    min-height: 350px;
+    padding: 28px;
+    overflow: hidden;
+    background: var(--panel);
+    border: 1px solid var(--border);
+}
+
+.featured-card {
+    background: var(--white);
+    color: var(--black);
+}
+
+.card-number {
+    position: absolute;
+    top: 23px;
+    right: 24px;
+    color: var(--muted);
     font-family: "IBM Plex Mono", monospace;
-}
-
-.footer-name {
-    font-weight: 600;
-    letter-spacing: 0.08em;
-}
-
-.footer-subtitle {
-    color: var(--muted);
-}
-
-.footer-inner nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 25px;
-}
-
-.footer-inner nav a {
-    color: var(--muted);
     font-size: 0.62rem;
-    letter-spacing: 0.07em;
 }
 
-.footer-inner nav a:hover {
-    color: var(--white);
+.card-label {
+    margin: 0 0 55px;
+    color: var(--muted);
+}
+
+.about-card h3 {
+    position: relative;
+    z-index: 2;
+    max-width: 520px;
+    margin: 0;
+    font-size: clamp(1.5rem, 2.5vw, 2.7rem);
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+}
+
+.about-card > p:last-of-type {
+    position: relative;
+    z-index: 2;
+    max-width: 410px;
+    margin: 0;
+    color: var(--white-soft);
+    line-height: 1.7;
+}
+
+.card-shape {
+    position: absolute;
+    pointer-events: none;
+}
+
+.card-circle {
+    right: -100px;
+    bottom: -120px;
+    width: 310px;
+    height: 310px;
+    border: 1px solid rgba(5, 5, 5, 0.25);
+    border-radius: 50%;
+}
+
+.card-circle::after {
+    content: "";
+    position: absolute;
+    inset: 45px;
+    border: 1px solid rgba(5, 5, 5, 0.2);
+    border-radius: 50%;
+}
+
+.card-line {
+    right: -40px;
+    bottom: 70px;
+    width: 240px;
+    height: 1px;
+    background: var(--border-light);
+    transform: rotate(-35deg);
+}
+
+.card-square {
+    right: -45px;
+    bottom: -45px;
+    width: 180px;
+    height: 180px;
+    border: 1px solid var(--border-light);
+    transform: rotate(18deg);
+}
+
+.about-link {
+    display: inline-block;
+    margin-top: 27px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--white);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.66rem;
 }
 
 
-/* =========================================================
+/* =========================================
    RESPONSIVE
-========================================================= */
+========================================= */
 
-@media (max-width: 1100px) {
+@media (max-width: 1050px) {
 
-    .database-identity {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 28px;
-    }
-
-    .database-overview {
+    .database-hero,
+    .about-heading {
         grid-template-columns: 1fr;
     }
 
-    .about-panel {
-        min-height: auto;
+    .database-status {
+        margin-top: 25px;
     }
 
-    .search-interface {
+    .about-lead {
+        grid-column: 1;
+        grid-row: auto;
+        margin-top: 25px;
+    }
+
+    .about-card-grid {
         grid-template-columns: 1fr;
+    }
+
+    .search-layout {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .main-search-field {
+        grid-column: 1 / -1;
     }
 
 }
 
-@media (max-width: 800px) {
+@media (max-width: 760px) {
 
     .database-shell {
         width: calc(100% - 28px);
-        padding-top: 28px;
     }
 
     .database-navigation {
         flex-wrap: wrap;
     }
 
-    .database-navigation a {
-        margin-right: 22px;
-        padding-right: 10px;
-    }
-
-    .statistics-strip {
+    .statistics-grid {
         grid-template-columns: 1fr 1fr;
     }
 
-    .statistic:nth-child(2) {
+    .stat-card:nth-child(2) {
         border-right: 0;
     }
 
-    .statistic:nth-child(-n + 2) {
-        border-bottom: 1px solid var(--border);
-    }
-
     .map-frame {
-        height: 520px;
-        min-height: 520px;
+        height: 500px;
     }
 
 }
 
-@media (max-width: 560px) {
+@media (max-width: 520px) {
 
-    .database-identity h1 {
-        font-size: 2.35rem;
+    .database-hero h1 {
+        font-size: 2.4rem;
     }
 
-    .database-navigation {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .database-navigation a {
-        margin: 0;
-    }
-
-    .map-toolbar,
-    .map-footer,
-    .search-header,
-    .footer-inner {
+    .section-toolbar,
+    .map-lower-bar {
         align-items: flex-start;
         flex-direction: column;
     }
 
-    .statistics-strip {
+    .statistics-grid,
+    .search-layout {
         grid-template-columns: 1fr;
     }
 
-    .statistic,
-    .statistic:nth-child(2) {
+    .stat-card {
         border-right: 0;
         border-bottom: 1px solid var(--border);
     }
 
-    .statistic:last-child {
-        border-bottom: 0;
-    }
-
-    .database-filters {
-        grid-template-columns: 1fr;
-    }
-
     .search-input-row {
         grid-template-columns: 1fr;
-        gap: 9px;
+        gap: 8px;
     }
 
     .search-input-row input {
         border-right: 1px solid var(--border-light);
-    }
-
-    .search-input-row button {
-        width: 100%;
     }
 
 }
