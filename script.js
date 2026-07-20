@@ -515,7 +515,7 @@ function addCaseLayer() {
             maxWidth: "360px"
         })
             .setLngLat(coordinates)
-            .setHTML("<div style='padding:12px;color:black;'>Popup test</div>")
+            .setHTML(createPopupHTML(feature.properties))
             .addTo(map);
     });
 
