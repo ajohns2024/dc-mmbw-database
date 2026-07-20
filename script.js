@@ -31,6 +31,14 @@ function initializeMap() {
         pitch: 0,
         bearing: 0
     });
+   
+    map.on("style.load", () => {
+    map.setConfigProperty("basemap", "lightPreset", "night");
+    map.setConfigProperty("basemap", "showPointOfInterestLabels", false);
+    map.setConfigProperty("basemap", "showTransitLabels", false);
+    map.setConfigProperty("basemap", "showRoadLabels", false);
+    map.setConfigProperty("basemap", "showPlaceLabels", true);
+});
 
     map.on("style.load", () => {
     map.setConfigProperty("basemap", "lightPreset", "night");
@@ -498,11 +506,11 @@ function addCaseLayer() {
         16, 5
     ],
 
-    "circle-color": "#7a1538",
-        "circle-opacity": 0.92,
-        "circle-stroke-color": "#2b0613",
-        "circle-stroke-width": 1.4,
-        "circle-blur": 0.15
+    "circle-color": "#9b1c1c",
+"circle-opacity": 0.9,
+"circle-stroke-color": "#3f0a12",
+"circle-stroke-width": 1.2,
+"circle-blur": 0.2
     }
 });
         
