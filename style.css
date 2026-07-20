@@ -633,67 +633,62 @@ body {
 /* ===========================
    CASE POPUP
 =========================== */
-
 .mapboxgl-popup-content{
-    padding:22px;
+    background:#f7f4ef;
+    border:1px solid #65001c;
     border-radius:0;
-    border:1px solid #1a1a1a;
-    background:#ffffff;
+    padding:12px 14px;
     box-shadow:none;
 }
 
 .mapboxgl-popup-close-button{
+    color:#65001c;
     font-size:20px;
-    color:#555;
-    padding:6px 10px;
+    padding:4px 8px;
 }
 
 .case-popup{
     font-family:Georgia, serif;
-    color:#111;
-    width:320px;
+    color:#171717;
+    width:300px;
 }
 
 .case-popup h2{
     margin:0;
-    font-size:24px;
-    line-height:1.2;
+    font-size:22px;
+    line-height:1.05;
     font-weight:700;
+    color:#3f0012;
 }
 
 .popup-divider{
-    margin:14px 0 18px;
-    border-top:1px solid #d8d8d8;
+    height:1px;
+    background:#d7c7cb;
+    margin:8px 0 10px;
 }
 
-.popup-field{
-    margin-bottom:16px;
+.popup-detail{
+    margin:4px 0;
+    font-size:14px;
+    line-height:1.2;
 }
 
-.popup-label{
-    display:block;
-    font-size:10px;
-    letter-spacing:.18em;
-    color:#777;
-    margin-bottom:4px;
-    font-family:Arial, sans-serif;
-}
-
-.popup-value{
-    display:block;
-    font-size:15px;
-    line-height:1.55;
+.popup-summary{
+    margin:10px 0 8px;
+    padding-top:8px;
+    border-top:1px solid #d7c7cb;
+    font-size:13px;
+    line-height:1.35;
+    font-style:italic;
 }
 
 .popup-link{
     display:inline-block;
-    margin-top:10px;
-    color:#7f0000;
+    margin-top:6px;
+    color:#65001c;
+    font-size:13px;
+    font-weight:700;
     text-decoration:none;
-    font-weight:bold;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    font-size:11px;
 }
 
 .popup-link:hover{
