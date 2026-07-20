@@ -325,142 +325,101 @@ function addHighwayLayer() {
     });
 }
 
-
 function addCaseLayer() {
     map.addSource("case-points", {
         type: "geojson",
         data: caseGeoJSON,
-
-        cluster: true,
-        clusterMaxZoom: 13,
-        clusterRadius: 42
+        cluster: false
     });
 
-
     map.addLayer({
-        id: "case-clusters",
-        type: "circle",
+        id: "case-heatmap",
+        type: "heatmap",
         source: "case-points",
-        filter: ["has", "point_count"],
+        maxzoom: 15,
 
         paint: {
-            "circle-color": "#111111",
-            "circle-radius": [
-                "step",
-                ["get", "point_count"],
-                15,
-                15,
-                19,
-                35,
-                23
+            "heatmap-weight": 1,
+
+            "heatmap-intensity": [
+                "interpolate",
+                ["linear"],
+                ["zoom"],
+                8, 0.8,
+                14, 1.8
             ],
-            "circle-stroke-color": "#ffffff",
-            "circle-stroke-width": 1.5
+
+            "heatmap-radius": [
+                "interpolate",
+                ["linear"],
+                ["zoom"],
+                8, 12,
+                14, 28
+            ],
+
+            "heatmap-opacity": [
+                "interpolate",
+                ["linear"],
+                ["zoom"],
+                8, 0.65,
+                14, 0.25
+            ],
+
+            "heatmap-color": [
+                "interpolate",
+                ["linear"],
+                ["heatmap-density"],
+                0, "rgba(0,0,0,0)",
+                0.25, "rgba(120,0,0,0.25)",
+                0.5, "rgba(180,0,0,0.45)",
+                0.75, "rgba(220,0,0,0.65)",
+                1, "rgba(255,40,40,0.85)"
+            ]
         }
     });
 
-
     map.addLayer({
-        id: "case-cluster-count",
-        type: "symbol",
-        source: "case-points",
-        filter: ["has", "point_count"],
-
-        layout: {
-            "text-field": ["get", "point_count_abbreviated"],
-            "text-font": ["DIN Pro Medium", "Arial Unicode MS Bold"],
-            "text-size": 11
-        },
-
-        paint: {
-            "text-color": "#ffffff"
-        }
-    });
-
-
-    map.addLayer({
-        id: "case-unclustered-points",
+        id: "case-location-points",
         type: "circle",
         source: "case-points",
-        filter: ["!", ["has", "point_count"]],
 
         paint: {
-            "circle-color": "#b81e2b",
-            "circle-radius": 5,
+            "circle-radius": [
+                "interpolate",
+                ["linear"],
+                ["zoom"],
+                8, 3.5,
+                14, 6
+            ],
+
+            "circle-color": "#d71920",
             "circle-stroke-color": "#ffffff",
-            "circle-stroke-width": 1.4,
-            "circle-opacity": 0.92
+            "circle-stroke-width": 1.2,
+            "circle-opacity": 0.95
         }
     });
 
-
-    map.on("click", "case-clusters", (event) => {
-        const features = map.queryRenderedFeatures(
-            event.point,
-            {
-                layers: ["case-clusters"]
-            }
-        );
-
-        if (!features.length) {
-            return;
-        }
-
-        const clusterId =
-            features[0].properties.cluster_id;
-
-        map
-            .getSource("case-points")
-            .getClusterExpansionZoom(
-                clusterId,
-                (error, zoom) => {
-                    if (error) {
-                        console.error(error);
-                        return;
-                    }
-
-                    map.easeTo({
-                        center: features[0].geometry.coordinates,
-                        zoom
-                    });
-                }
-            );
-    });
-
-
-    map.on("click", "case-unclustered-points", (event) => {
+    map.on("click", "case-location-points", (event) => {
         const feature = event.features[0];
-
         const coordinates =
             feature.geometry.coordinates.slice();
-
-        const popupHTML =
-            createPopupHTML(feature.properties);
 
         new mapboxgl.Popup({
             closeButton: true,
             closeOnClick: true,
-            maxWidth: "310px"
+            maxWidth: "360px"
         })
             .setLngLat(coordinates)
-            .setHTML(popupHTML)
+            .setHTML(createPopupHTML(feature.properties))
             .addTo(map);
     });
 
+    map.on("mouseenter", "case-location-points", () => {
+        map.getCanvas().style.cursor = "pointer";
+    });
 
-    const interactiveLayers = [
-        "case-clusters",
-        "case-unclustered-points"
-    ];
-
-    interactiveLayers.forEach((layerId) => {
-        map.on("mouseenter", layerId, () => {
-            map.getCanvas().style.cursor = "pointer";
-        });
-
-        map.on("mouseleave", layerId, () => {
-            map.getCanvas().style.cursor = "";
-        });
+    map.on("mouseleave", "case-location-points", () => {
+        map.getCanvas().style.cursor = "";
     });
 }
 
