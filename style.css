@@ -1,1 +1,33 @@
+/* ===========================
+   GLOBAL
+=========================== */
 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    background:#000;
+
+    color:#ffffff;
+
+    font-family:"Times New Roman", serif;
+
+}
+
+/* ===========================
+   HEADER
+=========================== */
+
+.header-image{
+
+    width:100%;
+
+    display:block;
+
+    height:auto;
+
+}
