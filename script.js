@@ -3,6 +3,13 @@
 mapboxgl.accessToken =
     "pk.eyJ1IjoiYXZlcnllam9obnMiLCJhIjoiY21uNmo3YnNiMDZrYTJwcTFwcHRzOG83NCJ9.aFx3CE9PzNOHSiDO7cEf2g";
 
+const CASE_DATA_PATH =
+    "data/01_master_case_files/01_cases_master_cleaned_FIXED.csv";
+
+const HIGHWAY_DATA_PATH =
+    "data/02_geographic_boundary_files/02_interstate_highways.geojson";
+
+
 function initializeMap() {
     if (!mapboxgl.accessToken) {
         mapLoading.textContent =
