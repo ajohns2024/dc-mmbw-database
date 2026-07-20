@@ -16,7 +16,7 @@ function initializeMap() {
 
     map = new mapboxgl.Map({
         container: "map",
-        style: "mapbox://styles/mapbox/light-v11",
+        style: "mapbox://styles/mapbox/dark-v11",
         center: [-77.0369, 38.9072],
         zoom: 10.15,
         minZoom: 8,
