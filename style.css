@@ -629,3 +629,73 @@ body {
     }
 
 }
+
+/* ===========================
+   CASE POPUP
+=========================== */
+
+.mapboxgl-popup-content{
+    padding:22px;
+    border-radius:0;
+    border:1px solid #1a1a1a;
+    background:#ffffff;
+    box-shadow:none;
+}
+
+.mapboxgl-popup-close-button{
+    font-size:20px;
+    color:#555;
+    padding:6px 10px;
+}
+
+.case-popup{
+    font-family:Georgia, serif;
+    color:#111;
+    width:320px;
+}
+
+.case-popup h2{
+    margin:0;
+    font-size:24px;
+    line-height:1.2;
+    font-weight:700;
+}
+
+.popup-divider{
+    margin:14px 0 18px;
+    border-top:1px solid #d8d8d8;
+}
+
+.popup-field{
+    margin-bottom:16px;
+}
+
+.popup-label{
+    display:block;
+    font-size:10px;
+    letter-spacing:.18em;
+    color:#777;
+    margin-bottom:4px;
+    font-family:Arial, sans-serif;
+}
+
+.popup-value{
+    display:block;
+    font-size:15px;
+    line-height:1.55;
+}
+
+.popup-link{
+    display:inline-block;
+    margin-top:10px;
+    color:#7f0000;
+    text-decoration:none;
+    font-weight:bold;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    font-size:11px;
+}
+
+.popup-link:hover{
+    text-decoration:underline;
+}
