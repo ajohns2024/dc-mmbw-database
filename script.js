@@ -491,10 +491,12 @@ function addCaseLayer() {
     ],
 
     "circle-color": "#7a1538",
-    "circle-opacity": 0.92,
-    "circle-stroke-color": "#2b0613",
-    "circle-stroke-width": 1.4,
-    "circle-blur": 0.15
+        "circle-opacity": 0.92,
+        "circle-stroke-color": "#2b0613",
+        "circle-stroke-width": 1.4,
+        "circle-blur": 0.15
+    }
+});
         
     map.on("click", "case-location-points", (event) => {
         if (!event.features || !event.features.length) {
