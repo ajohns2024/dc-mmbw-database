@@ -49,20 +49,21 @@ select {
 
 .site-header {
     width: 100%;
-    background: #000000;
-    border-bottom: 1px solid #000000;
+    background: #000;
+    overflow: visible;
 }
 
 .site-header a {
     display: block;
+    width: 100%;
 }
 
 .header-image {
     display: block;
     width: 100%;
     height: auto;
-    max-height: 220px;
-    object-fit: cover;
+    max-height: none;
+    object-fit: contain;
 }
 
 
