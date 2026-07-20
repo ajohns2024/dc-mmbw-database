@@ -429,88 +429,28 @@ function addCaseLayer() {
         cluster: false
     });
 
-    map.addLayer({
-        id: "case-heatmap",
-        type: "heatmap",
-        source: "case-points",
-        maxzoom: 16,
+   
 
-        paint: {
-            "heatmap-weight": 1,
+   map.addLayer({
+    id: "case-location-points",
+    type: "circle",
+    source: "case-points",
 
-            "heatmap-intensity": [
-                "interpolate",
-                ["linear"],
-                ["zoom"],
-                8, 0.9,
-                12, 1.4,
-                16, 2
-            ],
+    paint: {
+        "circle-radius": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            8, 2.5,
+            12, 3.5
+            16, 4.5
+        ],
 
-            "heatmap-radius": [
-                "interpolate",
-                ["linear"],
-                ["zoom"],
-                8, 14,
-                12, 22,
-                16, 34
-            ],
+       "circle-color": "#6f102d",
+        "circle-opacity": 0.95,
 
-            "heatmap-opacity": [
-                "interpolate",
-                ["linear"],
-                ["zoom"],
-                8, 0.8,
-                13, 0.6,
-                16, 0.3
-            ],
-
-            "heatmap-color": [
-                "interpolate",
-                ["linear"],
-                ["heatmap-density"],
-
-                0,
-                "rgba(0, 0, 0, 0)",
-
-                0.2,
-                "rgba(72, 0, 20, 0.20)",
-
-                0.4,
-                "rgba(105, 0, 30, 0.38)",
-
-                0.6,
-                "rgba(128, 0, 38, 0.58)",
-
-                0.8,
-                "rgba(154, 18, 52, 0.76)",
-
-                1,
-                "rgba(190, 45, 72, 0.92)"
-            ]
-        }
-    });
-
-    map.addLayer({
-        id: "case-location-points",
-        type: "circle",
-        source: "case-points",
-
-     paint: {
-    "circle-radius": [
-        "interpolate",
-        ["linear"],
-        ["zoom"],
-        8, 2.5,
-        12, 3.5,
-        16, 5
-    ],
-
-    "circle-color": "#9b1c1c",
-"circle-opacity": 0.9,
-"circle-stroke-color": "#3f0a12",
-"circle-stroke-width": 1.2,
-"circle-blur": 0.2
+        "circle-stroke-color": "#f5e9e9",
+        "circle-stroke-width": 1.2
     }
 });
         
