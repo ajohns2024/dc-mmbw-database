@@ -1,0 +1,5 @@
+quadrant,case_count,expected_cases,SMR
+SE,84,63.18,1.33
+NE,47,52.82,0.89
+SW,5,6.22,0.8
+NW,30,43.77,0.69
