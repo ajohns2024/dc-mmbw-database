@@ -23,7 +23,7 @@ function initializeMap() {
 
     map = new mapboxgl.Map({
         container: "map",
-        style: "mapbox://styles/mapbox/dark-v11",
+        style: "mapbox://styles/mapbox/navigation-night-v1",
         center: [-77.0369, 38.9072],
         zoom: 10.15,
         minZoom: 8,
@@ -40,7 +40,7 @@ function initializeMap() {
     );
 
     map.on("load", () => {
-        addHighwayLayer();
+        // addHighwayLayer();
         loadCaseData();
     });
 
@@ -336,7 +336,7 @@ function addCaseLayer() {
         id: "case-heatmap",
         type: "heatmap",
         source: "case-points",
-        maxzoom: 15,
+        maxzoom: 16,
 
         paint: {
             "heatmap-weight": 1,
@@ -345,35 +345,51 @@ function addCaseLayer() {
                 "interpolate",
                 ["linear"],
                 ["zoom"],
-                8, 0.8,
-                14, 1.8
+                8, 0.9,
+                12, 1.4,
+                16, 2
             ],
 
             "heatmap-radius": [
                 "interpolate",
                 ["linear"],
                 ["zoom"],
-                8, 12,
-                14, 28
+                8, 14,
+                12, 22,
+                16, 34
             ],
 
             "heatmap-opacity": [
                 "interpolate",
                 ["linear"],
                 ["zoom"],
-                8, 0.65,
-                14, 0.25
+                8, 0.8,
+                13, 0.6,
+                16, 0.3
             ],
 
             "heatmap-color": [
                 "interpolate",
                 ["linear"],
                 ["heatmap-density"],
-                0, "rgba(0,0,0,0)",
-                0.25, "rgba(120,0,0,0.25)",
-                0.5, "rgba(180,0,0,0.45)",
-                0.75, "rgba(220,0,0,0.65)",
-                1, "rgba(255,40,40,0.85)"
+
+                0,
+                "rgba(0, 0, 0, 0)",
+
+                0.2,
+                "rgba(72, 0, 20, 0.20)",
+
+                0.4,
+                "rgba(105, 0, 30, 0.38)",
+
+                0.6,
+                "rgba(128, 0, 38, 0.58)",
+
+                0.8,
+                "rgba(154, 18, 52, 0.76)",
+
+                1,
+                "rgba(190, 45, 72, 0.92)"
             ]
         }
     });
@@ -388,18 +404,26 @@ function addCaseLayer() {
                 "interpolate",
                 ["linear"],
                 ["zoom"],
-                8, 3.5,
-                14, 6
+                8, 3,
+                12, 4,
+                16, 6
             ],
 
-            "circle-color": "#d71920",
-            "circle-stroke-color": "#ffffff",
-            "circle-stroke-width": 1.2,
-            "circle-opacity": 0.95
+            "circle-color": "#5d0018",
+            "circle-opacity": 0.9,
+
+            "circle-stroke-color": "#ffffff"
+            "circle-blur": 0.65
+
+            "circle-blur": 0.25
         }
     });
 
     map.on("click", "case-location-points", (event) => {
+        if (!event.features || !event.features.length) {
+            return;
+        }
+
         const feature = event.features[0];
         const coordinates =
             feature.geometry.coordinates.slice();
@@ -422,7 +446,6 @@ function addCaseLayer() {
         map.getCanvas().style.cursor = "";
     });
 }
-
 
 /* =========================================
    SEARCH EVENTS
