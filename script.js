@@ -481,22 +481,22 @@ function addCaseLayer() {
         source: "case-points",
 
         paint: {
-            "circle-radius": [
-                "interpolate",
-                ["linear"],
-                ["zoom"],
-                8, 3,
-                12, 4,
-                16, 6
-            ],
+    "circle-radius": [
+        "interpolate",
+        ["linear"],
+        ["zoom"],
+        8, 3,
+        12, 4,
+        16, 6
+    ],
 
-            "circle-color": "#5d0018",
-            "circle-opacity": 0.9,
-
-            "circle-stroke-color": "#ffffff"
-            "circle-blur": 0.65
-
-            "circle-blur": 0.25
+    "circle-color": "#5d0018",
+    "circle-opacity": 0.9,
+    "circle-stroke-color": "#ffffff",
+    "circle-stroke-width": 1,
+    "circle-blur": 0.45
+}
+           
         }
     });
 
