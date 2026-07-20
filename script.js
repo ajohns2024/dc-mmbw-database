@@ -23,7 +23,7 @@ function initializeMap() {
 
     map = new mapboxgl.Map({
         container: "map",
-        style: "mapbox://styles/mapbox/dark-v11",
+        style: "mapbox://styles/mapbox/standard",
         center: [-77.0369, 38.9072],
         zoom: 10.15,
         minZoom: 8,
@@ -32,6 +32,14 @@ function initializeMap() {
         bearing: 0
     });
 
+    map.on("style.load", () => {
+    map.setConfigProperty("basemap", "lightPreset", "night");
+    map.setConfigProperty("basemap", "showPointOfInterestLabels", false);
+    map.setConfigProperty("basemap", "showTransitLabels", false);
+    map.setConfigProperty("basemap", "showRoadLabels", false);
+    map.setConfigProperty("basemap", "showPlaceLabels", true);
+});
+    
     map.addControl(
         new mapboxgl.NavigationControl({
             showCompass: false
