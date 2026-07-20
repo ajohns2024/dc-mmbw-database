@@ -325,6 +325,87 @@ function addHighwayLayer() {
     });
 }
 
+function createPopupHTML(properties) {
+    const value = (field) => {
+        if (
+            field === null ||
+            field === undefined ||
+            String(field).trim() === ""
+        ) {
+            return "Unknown";
+        }
+
+        return String(field);
+    };
+
+    const sourceLink = value(properties.source_link);
+
+    return `
+        <div class="case-popup">
+            <h2>${value(properties.display_name)}</h2>
+
+            <div class="popup-divider"></div>
+
+            <div class="popup-field">
+                <span class="popup-label">CASE TYPE</span>
+                <span class="popup-value">
+                    ${value(properties.case_type)}
+                </span>
+            </div>
+
+            <div class="popup-field">
+                <span class="popup-label">STATUS</span>
+                <span class="popup-value">
+                    ${value(properties.case_status)}
+                </span>
+            </div>
+
+            <div class="popup-field">
+                <span class="popup-label">LOCATION</span>
+                <span class="popup-value">
+                    ${value(properties.geocoded_address)}
+                </span>
+            </div>
+
+            <div class="popup-field">
+                <span class="popup-label">YEAR LAST SEEN</span>
+                <span class="popup-value">
+                    ${value(properties.year_last_seen)}
+                </span>
+            </div>
+
+            <div class="popup-field">
+                <span class="popup-label">AGE</span>
+                <span class="popup-value">
+                    ${value(properties.age_at_event)}
+                </span>
+            </div>
+
+            <div class="popup-field">
+                <span class="popup-label">INFORMATION</span>
+                <span class="popup-value">
+                    ${value(properties.case_summary)}
+                </span>
+            </div>
+
+            ${
+                sourceLink !== "Unknown"
+                    ? `
+                        <a
+                            class="popup-link"
+                            href="${sourceLink}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            VIEW SOURCE →
+                        </a>
+                    `
+                    : ""
+            }
+        </div>
+    `;
+}
+
 function addCaseLayer() {
     map.addSource("case-points", {
         type: "geojson",
@@ -434,7 +515,7 @@ function addCaseLayer() {
             maxWidth: "360px"
         })
             .setLngLat(coordinates)
-            .setHTML(createPopupHTML(feature.properties))
+            .setHTML("<div style='padding:12px;color:black;'>Popup test</div>")
             .addTo(map);
     });
 
