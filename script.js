@@ -353,11 +353,30 @@ function createPopupHTML(properties) {
 
             <div class="popup-divider"></div>
 
-            <div class="popup-detail">🔴 ${caseType}</div>
-            <div class="popup-detail">🎂 Age ${age}</div>
-            <div class="popup-detail">📍 ${location}</div>
-            <div class="popup-detail">📅 ${year}</div>
-            <div class="popup-detail">📂 ${status}</div>
+            <div class="popup-detail">
+    <span class="popup-label">CASE TYPE</span>
+    <span class="popup-value">${caseType}</span>
+</div>
+
+<div class="popup-detail">
+    <span class="popup-label">AGE</span>
+    <span class="popup-value">${age}</span>
+</div>
+
+<div class="popup-detail">
+    <span class="popup-label">LOCATION</span>
+    <span class="popup-value">${location}</span>
+</div>
+
+<div class="popup-detail">
+    <span class="popup-label">YEAR</span>
+    <span class="popup-value">${year}</span>
+</div>
+
+<div class="popup-detail">
+    <span class="popup-label">STATUS</span>
+    <span class="popup-value">${status}</span>
+</div>
 
             ${
                 summary !== "Unknown"
