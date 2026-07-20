@@ -1,18 +1,38 @@
+<!-- Professional database fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+>
+
+<!-- Main stylesheet -->
+<link rel="stylesheet" href="style.css">
+
 /* =========================================
    GLOBAL
 ========================================= */
+/* =========================================================
+   ROOT
+========================================================= */
 
 :root {
-    --page-background: #f7f6f2;
-    --paper: #ffffff;
-    --text: #111111;
-    --muted-text: #64625d;
-    --border: #d8d5ce;
-    --soft-border: #ebe8e1;
-    --accent: #111111;
-    --red: #b81e2b;
-    --green: #467d42;
-    --blue: #244c7a;
+    --black: #050505;
+    --black-soft: #0b0b0b;
+    --panel: #101010;
+    --panel-light: #151515;
+
+    --white: #f4f4f1;
+    --white-soft: #d4d4cf;
+    --muted: #8d8d87;
+
+    --border: #2c2c2a;
+    --border-light: #3d3d39;
+
+    --red: #d12632;
+    --green: #789b71;
 }
 
 * {
@@ -25,9 +45,9 @@ html {
 
 body {
     margin: 0;
-    background: var(--page-background);
-    color: var(--text);
-    font-family: Georgia, "Times New Roman", serif;
+    background: var(--black);
+    color: var(--white);
+    font-family: "Inter", Arial, sans-serif;
     line-height: 1.55;
 }
 
@@ -43,14 +63,14 @@ select {
 }
 
 
-/* =========================================
-   HEADER IMAGE
-========================================= */
+/* =========================================================
+   HEADER
+========================================================= */
 
 .site-header {
     width: 100%;
     background: #000;
-    overflow: visible;
+    border-bottom: 1px solid var(--border);
 }
 
 .site-header a {
@@ -63,366 +83,302 @@ select {
     width: 100%;
     height: auto;
     max-height: none;
-    object-fit: contain;
 }
 
 
-/* =========================================
-   MAIN PAPER
-========================================= */
+/* =========================================================
+   MAIN DATABASE SHELL
+========================================================= */
 
-.page-shell {
-    width: min(1440px, calc(100% - 48px));
-    margin: 32px auto 72px;
-    padding: 34px 42px 52px;
-    background: var(--paper);
+.database-shell {
+    width: min(1540px, calc(100% - 56px));
+    margin: 0 auto;
+    padding: 48px 0 90px;
+}
+
+
+/* =========================================================
+   DATABASE IDENTITY
+========================================================= */
+
+.database-identity {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 80px;
+    padding: 0 0 36px;
+}
+
+.identity-copy {
+    max-width: 1050px;
+}
+
+.system-label,
+.section-label,
+.block-label,
+.status-label,
+.stat-label,
+.primary-search label,
+.filter-group label {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.67rem;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: 0.12em;
+}
+
+.system-label,
+.section-label,
+.status-label {
+    margin: 0 0 10px;
+    color: var(--muted);
+}
+
+.database-identity h1 {
+    max-width: 1050px;
+    margin: 0;
+    font-size: clamp(2rem, 4vw, 4.7rem);
+    font-weight: 500;
+    line-height: 0.98;
+    letter-spacing: -0.045em;
+}
+
+.identity-subtitle {
+    max-width: 790px;
+    margin: 24px 0 0;
+    color: var(--white-soft);
+    font-size: 1rem;
+    line-height: 1.65;
+}
+
+.system-status {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    min-width: 175px;
+    padding: 14px 0;
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.status-indicator {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    flex: 0 0 7px;
+    background: var(--green);
+    border-radius: 50%;
+}
+
+.status-label {
+    margin: 0 0 2px;
+}
+
+.status-value {
+    margin: 0;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.72rem;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.database-navigation {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.database-navigation a {
+    position: relative;
+    padding: 19px 32px 18px 0;
+    margin-right: 38px;
+    color: var(--muted);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    transition:
+        color 160ms ease,
+        border-color 160ms ease;
+}
+
+.database-navigation a:hover,
+.database-navigation a.active {
+    color: var(--white);
+}
+
+.database-navigation a.active::after {
+    content: "";
+    position: absolute;
+    right: 32px;
+    bottom: -1px;
+    left: 0;
+    height: 2px;
+    background: var(--white);
+}
+
+
+/* =========================================================
+   ABOUT + MAP LAYOUT
+========================================================= */
+
+.database-overview {
+    display: grid;
+    grid-template-columns: minmax(330px, 0.72fr) minmax(650px, 1.65fr);
+    gap: 28px;
+    padding: 28px 0;
+}
+
+.about-panel,
+.map-panel,
+.database-search {
+    background: var(--panel);
     border: 1px solid var(--border);
 }
 
-.top-row {
+.about-panel {
     display: flex;
+    flex-direction: column;
+    padding: 30px;
+}
+
+.section-heading {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.section-number {
+    margin: 2px 0 0;
+    color: var(--muted);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.65rem;
+}
+
+.section-heading h2,
+.map-toolbar h2 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+}
+
+.about-introduction {
+    padding: 35px 0 28px;
+    border-bottom: 1px solid var(--border);
+}
+
+.large-statement {
+    margin: 0 0 22px;
+    font-size: clamp(1.35rem, 2vw, 2.15rem);
+    font-weight: 400;
+    line-height: 1.18;
+    letter-spacing: -0.025em;
+}
+
+.about-introduction > p:last-child,
+.research-block p,
+.map-footer p {
+    color: var(--white-soft);
+}
+
+.research-block {
+    padding: 23px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.block-label {
+    margin: 0 0 9px;
+    color: var(--muted);
+}
+
+.research-block p:last-child {
+    margin: 0;
+    font-size: 0.88rem;
+    line-height: 1.62;
+}
+
+.research-block .finding-copy {
+    color: var(--white);
+    font-size: 0.98rem;
+    font-weight: 500;
+}
+
+.text-link {
+    display: inline-flex;
     align-items: center;
     justify-content: space-between;
     gap: 20px;
-}
-
-.database-abbreviation,
-.advanced-search-link {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-}
-
-.advanced-search-link {
-    padding: 8px 13px;
-    border: 1px solid var(--soft-border);
-}
-
-.advanced-search-link:hover {
-    border-color: var(--text);
-}
-
-
-/* =========================================
-   TITLE
-========================================= */
-
-.database-title {
-    max-width: 980px;
-    margin: 23px auto 33px;
-    text-align: center;
-}
-
-.database-title h1 {
-    margin: 0;
-    font-size: clamp(1.05rem, 1.65vw, 1.55rem);
-    line-height: 1.3;
-    font-weight: 700;
-    letter-spacing: 0.015em;
-}
-
-
-/* =========================================
-   NAVIGATION
-========================================= */
-
-.main-navigation {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    padding: 18px 0 23px;
-    border-top: 1px solid var(--soft-border);
-    border-bottom: 1px solid var(--soft-border);
-}
-
-.main-navigation a {
-    position: relative;
-    padding: 8px 4px;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-}
-
-.main-navigation a::after {
-    content: "";
-    position: absolute;
-    right: 20%;
-    bottom: 0;
-    left: 20%;
-    height: 1px;
-    background: transparent;
-}
-
-.main-navigation a:hover::after,
-.main-navigation a.active::after {
-    background: var(--text);
-}
-
-
-/* =========================================
-   HOMEPAGE GRID
-========================================= */
-
-.homepage-grid {
-    display: grid;
-    grid-template-columns: minmax(300px, 0.78fr) minmax(540px, 1.4fr);
-    gap: 60px;
-    padding-top: 42px;
-}
-
-
-/* =========================================
-   LEFT COPY
-========================================= */
-
-.research-copy {
-    max-width: 470px;
-}
-
-.copy-section {
-    margin-bottom: 28px;
-}
-
-.copy-section h2 {
-    margin: 0 0 11px;
-    font-size: 0.86rem;
-    line-height: 1.3;
-    letter-spacing: 0.015em;
-}
-
-.copy-section p {
-    margin: 0 0 13px;
-    font-size: 0.92rem;
-    line-height: 1.58;
-}
-
-.number-list {
-    display: grid;
-    gap: 13px;
-}
-
-.number-item {
-    display: grid;
-    grid-template-columns: 15px 1fr;
-    gap: 8px;
-    align-items: start;
-}
-
-.number-item p {
-    margin: 0;
-}
-
-.number-icon {
-    display: inline-block;
-    padding-top: 1px;
-    font-family: Arial, Helvetica, sans-serif;
+    margin-top: auto;
+    padding-top: 24px;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 0.67rem;
-    font-weight: 700;
+    letter-spacing: 0.07em;
 }
 
-.pin-icon {
-    color: var(--red);
-}
-
-.road-icon {
-    color: var(--green);
-}
-
-.chart-icon {
-    color: var(--blue);
-}
-
-.finding-statement {
-    max-width: 440px;
-    font-size: 0.86rem !important;
-    font-weight: 700;
-    line-height: 1.45 !important;
-    letter-spacing: 0.02em;
+.text-link span {
+    font-size: 1rem;
 }
 
 
-/* =========================================
-   RIGHT PANEL
-========================================= */
+/* =========================================================
+   MAP
+========================================================= */
 
-.database-panel {
+.map-panel {
     min-width: 0;
 }
 
-.search-panel,
-.map-panel {
-    border: 1px solid var(--border);
-}
-
-.search-panel {
-    margin-bottom: 18px;
-    padding: 22px;
-    background: #fbfaf7;
-}
-
-.panel-heading,
-.map-heading {
+.map-toolbar {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 20px;
-}
-
-.panel-heading {
-    margin-bottom: 20px;
-}
-
-.panel-label {
-    margin: 0 0 4px;
-    color: var(--muted-text);
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.62rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-}
-
-.panel-heading h2,
-.map-heading h2 {
-    margin: 0;
-    font-size: 0.9rem;
-    line-height: 1.3;
-    letter-spacing: 0.02em;
-}
-
-.panel-heading > a {
-    padding-bottom: 3px;
-    border-bottom: 1px solid var(--text);
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.64rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-}
-
-.input-label,
-.filter-group label {
-    display: block;
-    margin-bottom: 6px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.67rem;
-    font-weight: 700;
-    letter-spacing: 0.025em;
-}
-
-.search-row {
-    display: grid;
-    grid-template-columns: 1fr auto;
-}
-
-.search-row input {
-    min-width: 0;
-    height: 46px;
-    padding: 0 14px;
-    background: #ffffff;
-    border: 1px solid var(--text);
-    border-right: 0;
-    border-radius: 0;
-    outline: none;
-}
-
-.search-row input:focus {
-    box-shadow: inset 0 0 0 2px #7b7b7b;
-}
-
-.search-row button {
-    height: 46px;
-    padding: 0 23px;
-    background: var(--text);
-    color: #ffffff;
-    border: 1px solid var(--text);
-    cursor: pointer;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.67rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-}
-
-.search-row button:hover {
-    background: #333333;
-}
-
-.filter-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-    margin-top: 15px;
-}
-
-.filter-group select {
-    width: 100%;
-    height: 40px;
-    padding: 0 10px;
-    background: #ffffff;
-    border: 1px solid var(--border);
-    border-radius: 0;
-}
-
-.search-status {
-    margin: 14px 0 0;
-    color: var(--muted-text);
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.69rem;
-}
-
-
-/* =========================================
-   MAP
-========================================= */
-
-.map-panel {
-    background: #ffffff;
-}
-
-.map-heading {
-    padding: 17px 19px;
+    gap: 24px;
+    padding: 22px 24px;
     border-bottom: 1px solid var(--border);
 }
 
 .map-legend {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    gap: 13px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.58rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
+    align-items: center;
+    gap: 18px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.59rem;
+    letter-spacing: 0.06em;
 }
 
 .map-legend > span {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 7px;
 }
 
 .legend-dot {
     width: 8px;
     height: 8px;
     background: var(--red);
-    border: 1px solid #ffffff;
+    border: 1px solid var(--white);
     border-radius: 50%;
-    box-shadow: 0 0 0 1px var(--red);
 }
 
 .legend-line {
-    width: 18px;
+    width: 23px;
     height: 2px;
     background: var(--green);
 }
 
 .map-frame {
     position: relative;
-    min-height: 570px;
-    background: #e9e7e0;
+    height: 660px;
+    min-height: 660px;
     overflow: hidden;
+    background: #181818;
 }
 
 #map {
@@ -437,95 +393,259 @@ select {
     top: 50%;
     left: 50%;
     z-index: 4;
-    padding: 10px 14px;
     transform: translate(-50%, -50%);
-    background: rgba(255, 255, 255, 0.94);
-    border: 1px solid var(--border);
-    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px 13px;
+    background: rgba(5, 5, 5, 0.92);
+    border: 1px solid var(--border-light);
+    font-family: "IBM Plex Mono", monospace;
     font-size: 0.65rem;
-    font-weight: 700;
     letter-spacing: 0.08em;
 }
 
-.map-location-label {
+.map-coordinate-label {
     position: absolute;
-    right: 12px;
-    bottom: 12px;
+    right: 15px;
+    bottom: 15px;
     z-index: 3;
-    padding: 6px 9px;
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(17, 17, 17, 0.2);
-    font-family: Arial, Helvetica, sans-serif;
+    padding: 7px 9px;
+    background: rgba(5, 5, 5, 0.88);
+    border: 1px solid var(--border);
+    font-family: "IBM Plex Mono", monospace;
     font-size: 0.58rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
 }
 
 .map-footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
-    padding: 13px 18px;
+    gap: 24px;
+    padding: 16px 22px;
     border-top: 1px solid var(--border);
 }
 
 .map-footer p {
     margin: 0;
-    color: var(--muted-text);
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.67rem;
+    font-size: 0.76rem;
 }
 
 .map-footer a {
-    white-space: nowrap;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 0.63rem;
-    font-weight: 700;
+    letter-spacing: 0.06em;
 }
 
 
-/* =========================================
+/* =========================================================
+   STATISTICS
+========================================================= */
+
+.statistics-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-bottom: 28px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.statistic {
+    min-height: 145px;
+    padding: 25px 23px;
+    border-right: 1px solid var(--border);
+}
+
+.statistic:last-child {
+    border-right: 0;
+}
+
+.stat-value {
+    margin: 0 0 18px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: clamp(1.7rem, 2.8vw, 3.2rem);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.055em;
+}
+
+.stat-label {
+    max-width: 220px;
+    margin: 0;
+    color: var(--muted);
+}
+
+
+/* =========================================================
+   SEARCH DATABASE
+========================================================= */
+
+.database-search {
+    padding: 30px;
+}
+
+.search-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 40px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+}
+
+.search-header .text-link {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.search-interface {
+    display: grid;
+    grid-template-columns: minmax(420px, 1.6fr) minmax(300px, 0.8fr);
+    gap: 20px;
+    padding: 28px 0 20px;
+}
+
+.primary-search label,
+.filter-group label {
+    display: block;
+    margin: 0 0 8px;
+    color: var(--muted);
+}
+
+.search-input-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+
+.search-input-row input,
+.filter-group select {
+    width: 100%;
+    background: var(--black-soft);
+    color: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: 0;
+    outline: none;
+}
+
+.search-input-row input {
+    height: 52px;
+    padding: 0 16px;
+    border-right: 0;
+}
+
+.search-input-row input::placeholder {
+    color: #777771;
+}
+
+.search-input-row input:focus,
+.filter-group select:focus {
+    border-color: var(--white-soft);
+}
+
+.search-input-row button {
+    min-width: 180px;
+    height: 52px;
+    padding: 0 24px;
+    background: var(--white);
+    color: var(--black);
+    border: 1px solid var(--white);
+    cursor: pointer;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+}
+
+.search-input-row button:hover {
+    background: var(--white-soft);
+}
+
+.database-filters {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.filter-group select {
+    height: 52px;
+    padding: 0 13px;
+}
+
+.search-results-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 17px;
+    border-top: 1px solid var(--border);
+}
+
+.search-results-status p {
+    margin: 0;
+    color: var(--muted);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.65rem;
+}
+
+
+/* =========================================================
    MAPBOX POPUPS
-========================================= */
+========================================================= */
 
 .mapboxgl-popup-content {
-    max-width: 280px;
-    padding: 16px;
+    max-width: 310px;
+    padding: 18px;
+    background: #0d0d0d;
+    color: var(--white);
+    border: 1px solid var(--border-light);
     border-radius: 0;
-    font-family: Georgia, "Times New Roman", serif;
+    box-shadow: none;
+    font-family: "Inter", sans-serif;
+}
+
+.mapboxgl-popup-tip {
+    border-top-color: #0d0d0d !important;
+    border-bottom-color: #0d0d0d !important;
+}
+
+.mapboxgl-popup-close-button {
+    color: var(--white);
+    font-size: 20px;
 }
 
 .case-popup h3 {
-    margin: 0 0 8px;
-    font-size: 1rem;
+    margin: 0 0 13px;
+    font-size: 1.05rem;
+    font-weight: 500;
 }
 
 .case-popup p {
-    margin: 5px 0;
-    font-size: 0.78rem;
-    line-height: 1.45;
+    margin: 7px 0;
+    color: var(--white-soft);
+    font-size: 0.77rem;
+    line-height: 1.5;
+}
+
+.case-popup strong {
+    color: var(--white);
 }
 
 .case-popup a {
     display: inline-block;
-    margin-top: 8px;
-    padding-bottom: 2px;
-    border-bottom: 1px solid;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.65rem;
-    font-weight: 700;
+    margin-top: 10px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid var(--white);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.62rem;
 }
 
 
-/* =========================================
+/* =========================================================
    FOOTER
-========================================= */
+========================================================= */
 
 .site-footer {
-    padding: 34px 24px;
-    background: #111111;
-    color: #ffffff;
+    padding: 38px 28px;
+    background: #000;
+    color: var(--white);
+    border-top: 1px solid var(--border);
 }
 
 .footer-inner {
@@ -533,121 +653,159 @@ select {
     align-items: flex-end;
     justify-content: space-between;
     gap: 40px;
-    width: min(1350px, 100%);
+    width: min(1480px, 100%);
     margin: 0 auto;
 }
 
 .footer-inner p {
-    margin: 3px 0;
-    font-size: 0.76rem;
+    margin: 4px 0;
+    font-size: 0.74rem;
+}
+
+.footer-name,
+.footer-inner nav a {
+    font-family: "IBM Plex Mono", monospace;
 }
 
 .footer-name {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.8rem !important;
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: 0.08em;
 }
 
 .footer-subtitle {
-    color: #b9b9b9;
+    color: var(--muted);
 }
 
 .footer-inner nav {
     display: flex;
     flex-wrap: wrap;
-    gap: 22px;
+    gap: 25px;
 }
 
 .footer-inner nav a {
-    font-family: Arial, Helvetica, sans-serif;
+    color: var(--muted);
     font-size: 0.62rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.07em;
+}
+
+.footer-inner nav a:hover {
+    color: var(--white);
 }
 
 
-/* =========================================
+/* =========================================================
    RESPONSIVE
-========================================= */
+========================================================= */
 
-@media (max-width: 1050px) {
+@media (max-width: 1100px) {
 
-    .homepage-grid {
-        grid-template-columns: 1fr;
-        gap: 38px;
+    .database-identity {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 28px;
     }
 
-    .research-copy {
-        max-width: 720px;
+    .database-overview {
+        grid-template-columns: 1fr;
+    }
+
+    .about-panel {
+        min-height: auto;
+    }
+
+    .search-interface {
+        grid-template-columns: 1fr;
     }
 
 }
 
-@media (max-width: 720px) {
+@media (max-width: 800px) {
 
-    .page-shell {
-        width: calc(100% - 20px);
-        margin-top: 10px;
-        padding: 22px 18px 36px;
+    .database-shell {
+        width: calc(100% - 28px);
+        padding-top: 28px;
     }
 
-    .top-row {
-        align-items: flex-start;
+    .database-navigation {
+        flex-wrap: wrap;
     }
 
-    .main-navigation {
+    .database-navigation a {
+        margin-right: 22px;
+        padding-right: 10px;
+    }
+
+    .statistics-strip {
         grid-template-columns: 1fr 1fr;
     }
 
-    .filter-row {
-        grid-template-columns: 1fr;
+    .statistic:nth-child(2) {
+        border-right: 0;
     }
 
-    .map-heading,
-    .panel-heading,
+    .statistic:nth-child(-n + 2) {
+        border-bottom: 1px solid var(--border);
+    }
+
+    .map-frame {
+        height: 520px;
+        min-height: 520px;
+    }
+
+}
+
+@media (max-width: 560px) {
+
+    .database-identity h1 {
+        font-size: 2.35rem;
+    }
+
+    .database-navigation {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .database-navigation a {
+        margin: 0;
+    }
+
+    .map-toolbar,
     .map-footer,
+    .search-header,
     .footer-inner {
         align-items: flex-start;
         flex-direction: column;
     }
 
-    .map-legend {
-        justify-content: flex-start;
-    }
-
-    .map-frame {
-        min-height: 480px;
-    }
-
-}
-
-@media (max-width: 480px) {
-
-    .header-image {
-        min-height: 100px;
-        object-fit: cover;
-    }
-
-    .database-title {
-        margin: 18px auto 24px;
-    }
-
-    .main-navigation {
+    .statistics-strip {
         grid-template-columns: 1fr;
     }
 
-    .search-row {
+    .statistic,
+    .statistic:nth-child(2) {
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .statistic:last-child {
+        border-bottom: 0;
+    }
+
+    .database-filters {
         grid-template-columns: 1fr;
-        gap: 8px;
     }
 
-    .search-row input {
-        border-right: 1px solid var(--text);
+    .search-input-row {
+        grid-template-columns: 1fr;
+        gap: 9px;
     }
 
-    .map-frame {
-        min-height: 430px;
+    .search-input-row input {
+        border-right: 1px solid var(--border-light);
+    }
+
+    .search-input-row button {
+        width: 100%;
     }
 
 }
