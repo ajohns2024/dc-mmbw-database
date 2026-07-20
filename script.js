@@ -480,7 +480,7 @@ function addCaseLayer() {
         type: "circle",
         source: "case-points",
 
-        paint: {
+      paint: {
     "circle-radius": [
         "interpolate",
         ["linear"],
@@ -496,10 +496,7 @@ function addCaseLayer() {
     "circle-stroke-width": 1,
     "circle-blur": 0.45
 }
-           
-        }
-    });
-
+});
     map.on("click", "case-location-points", (event) => {
         if (!event.features || !event.features.length) {
             return;
