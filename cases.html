@@ -1,1 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Search the Washington, D.C. public forensic database documenting missing and murdered Black women and girls."
+    >
+
+    <head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Search the Washington, D.C. public forensic database documenting missing and murdered Black women and girls."
+    >
+
+    <title>
+        Case Directory | Washington, D.C. Missing and Murdered Black Women Database
+    </title>
+
+    <!-- Mapbox stylesheet -->
+    <link
+        href="https://api.mapbox.com/mapbox-gl-js/v3.25.0/mapbox-gl.css"
+        rel="stylesheet"
+    >
+
+    <!-- Global styling -->
+    <link rel="stylesheet" href="style.css?v=14">
+
+    <!-- Case directory styling -->
+    <link rel="stylesheet" href="cases.css?v=1">
+
+</head>
+
+
+<body>
+
+    <!-- =========================================
+         HEADER IMAGE
+    ========================================== -->
+
+    <header class="site-header">
+
+        <a href="index.html" aria-label="Return to homepage">
+
+            <img
+                src="assets/header.png?v=3"
+                alt="Washington, D.C. Missing and Murdered Black Women Database"
+                class="header-image"
+            >
+
+        </a>
+
+    </header>
+
+
+    <!-- =========================================
+         PAGE CONTENT
+    ========================================== -->
+
+    <main
+        class="database-shell case-directory-shell"
+        data-csv-path="data/01_master_case_files/01_cases_master_cleaned_FIXED.csv"
+    >
+
+
+        <!-- =====================================
+             DIRECTORY INTRODUCTION
+        ====================================== -->
+
+        <section class="directory-hero">
+
+            <div class="directory-hero-copy">
+
+                <p class="system-label">
+                    PUBLIC FORENSIC DATABASE / CASE RECORDS
+                </p>
+
+                <h1>
+                    CASE DIRECTORY
+                </h1>
+
+                <p class="hero-description">
+                    Search documented records of missing and murdered Black women
+                    and girls in Washington, D.C.
+                </p>
+
+            </div>
+
+
+            <div class="database-status directory-status">
+
+                <span class="status-dot"></span>
+
+                <div>
+                    <p>DIRECTORY STATUS</p>
+                    <strong>PUBLIC ACCESS</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             NAVIGATION
+        ====================================== -->
+
+        <nav
+            class="database-navigation"
+            aria-label="Primary navigation"
+        >
+
+            <a href="index.html">
+                DATABASE
+            </a>
+
+            <a href="cases.html" class="active">
+                CASE DIRECTORY
+            </a>
+
+            <a href="index.html#interactive-map">
+                INTERACTIVE MAP
+            </a>
+
+        </nav>
+
+
+        <!-- =====================================
+             DIRECTORY SEARCH
+        ====================================== -->
+
+        <section
+            class="directory-search-section"
+            aria-labelledby="directory-search-title"
+        >
+
+            <div class="section-toolbar">
+
+                <div>
+
+                    <p class="section-kicker">
+                        DOCUMENTED CASE RECORDS
+                    </p>
+
+                    <h2 id="directory-search-title">
+                        SEARCH THE DIRECTORY
+                    </h2>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="clear-directory-search"
+                    id="clear-search-button"
+                >
+                    CLEAR SEARCH
+                </button>
+
+            </div>
+
+
+            <div class="directory-search-panel">
+
+                <div class="directory-main-search">
+
+                    <label for="directory-search-input">
+                        SEARCH BY NAME, CASE ID, YEAR, OR LOCATION
+                    </label>
+
+                    <div class="search-input-row">
+
+                        <input
+                            type="search"
+                            id="directory-search-input"
+                            placeholder="Enter a name, year, case ID, or location"
+                            autocomplete="off"
+                        >
+
+                        <button
+                            type="button"
+                            id="directory-search-button"
+                        >
+                            SEARCH
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="directory-filter-grid">
+
+                    <div class="search-filter">
+
+                        <label for="directory-case-type-filter">
+                            CASE TYPE
+                        </label>
+
+                        <select id="directory-case-type-filter">
+
+                            <option value="">
+                                All case types
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="search-filter">
+
+                        <label for="directory-status-filter">
+                            CASE STATUS
+                        </label>
+
+                        <select id="directory-status-filter">
+
+                            <option value="">
+                                All statuses
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="search-filter">
+
+                        <label for="directory-year-filter">
+                            YEAR
+                        </label>
+
+                        <select id="directory-year-filter">
+
+                            <option value="">
+                                All years
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="search-filter">
+
+                        <label for="directory-quadrant-filter">
+                            QUADRANT
+                        </label>
+
+                        <select id="directory-quadrant-filter">
+
+                            <option value="">
+                                All quadrants
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="directory-search-footer">
+
+                <div class="search-status-row">
+
+                    <span class="status-dot"></span>
+
+                    <p
+                        id="directory-loading-status"
+                        aria-live="polite"
+                    >
+                        Loading documented case records...
+                    </p>
+
+                </div>
+
+
+                <p class="directory-data-note">
+                    Records reflect publicly documented information available
+                    to the database research team.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             RESULTS TOOLBAR
+        ====================================== -->
+
+        <section
+            class="directory-results"
+            aria-labelledby="directory-results-title"
+        >
+
+            <div class="results-toolbar">
+
+                <div>
+
+                    <p class="section-kicker">
+                        CASE RECORD INDEX
+                    </p>
+
+                    <h2 id="directory-results-title">
+                        DOCUMENTED CASES
+                    </h2>
+
+                </div>
+
+
+                <div class="results-controls">
+
+                    <p
+                        class="results-count"
+                        id="results-count"
+                        aria-live="polite"
+                    >
+                        0 RECORDS
+                    </p>
+
+
+                    <div class="results-sort-control">
+
+                        <label for="directory-sort">
+                            SORT
+                        </label>
+
+                        <select id="directory-sort">
+
+                            <option value="name-asc">
+                                Name: A–Z
+                            </option>
+
+                            <option value="name-desc">
+                                Name: Z–A
+                            </option>
+
+                            <option value="year-desc">
+                                Year: Newest first
+                            </option>
+
+                            <option value="year-asc">
+                                Year: Oldest first
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Active filters inserted here by cases.js -->
+
+            <div
+                class="active-filter-row"
+                id="active-filter-row"
+                aria-live="polite"
+                hidden
+            >
+
+                <p class="active-filter-label">
+                    ACTIVE SEARCH
+                </p>
+
+                <div
+                    class="active-filter-list"
+                    id="active-filter-list"
+                ></div>
+
+            </div>
+
+
+            <!-- Case cards inserted here by cases.js -->
+
+            <div class="directory-content-layout">
+
+    <!-- =====================================
+         CASE RECORDS
+    ====================================== -->
+
+    <div class="directory-records-column">
+
+        <div
+            class="case-directory-grid"
+            id="case-directory-grid"
+            aria-live="polite"
+            aria-busy="true"
+        ></div>
+
+    </div>
+
+
+    <!-- =====================================
+         DIRECTORY MAP
+    ====================================== -->
+
+    <aside
+        class="directory-map-column"
+        aria-labelledby="directory-map-title"
+    >
+
+        <div class="directory-map-heading">
+
+            <div>
+
+                <p class="section-kicker">
+                    SPATIAL RECORD INDEX
+                </p>
+
+                <h3 id="directory-map-title">
+                    CASE LOCATIONS
+                </h3>
+
+            </div>
+
+
+            <div class="map-legend">
+
+                <span>
+                    <span class="legend-dot"></span>
+                    VISIBLE RECORD
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="directory-map-frame">
+
+            <div
+                id="directory-map"
+                aria-label="Interactive map showing the locations of cases currently visible in the directory"
+            ></div>
+
+
+            <div
+                class="map-loading"
+                id="directory-map-loading"
+            >
+                LOADING CASE LOCATIONS
+            </div>
+
+
+            <div class="map-location-label">
+                WASHINGTON, D.C. / DIRECTORY VIEW
+            </div>
+
+        </div>
+
+
+        <div class="directory-map-footer">
+
+            <p id="directory-map-status">
+                Map locations will update with the active search and filters.
+            </p>
+
+            <a href="index.html#interactive-map">
+                OPEN FULL MAP →
+            </a>
+
+        </div>
+
+    </aside>
+
+</div>
+
+
+            <!-- Loading state -->
+
+            <div
+                class="directory-message directory-loading-message"
+                id="directory-loading-message"
+            >
+
+                <span class="directory-message-index">
+                    00
+                </span>
+
+                <p class="directory-message-label">
+                    ACCESSING CASE DATABASE
+                </p>
+
+                <h3>
+                    Loading documented records.
+                </h3>
+
+                <p>
+                    Please wait while the public case directory is prepared.
+                </p>
+
+            </div>
+
+
+            <!-- No-results state -->
+
+            <div
+                class="directory-message no-results-message"
+                id="no-results-message"
+                hidden
+            >
+
+                <span class="directory-message-index">
+                    00
+                </span>
+
+                <p class="directory-message-label">
+                    NO MATCHING RECORDS
+                </p>
+
+                <h3>
+                    No documented cases matched this search.
+                </h3>
+
+                <p>
+                    Check the spelling, remove a filter, or search using a
+                    broader name, year, case ID, or location.
+                </p>
+
+                <button
+                    type="button"
+                    id="no-results-clear-button"
+                >
+                    VIEW ENTIRE DIRECTORY →
+                </button>
+
+            </div>
+
+
+            <!-- Data-error state -->
+
+            <div
+                class="directory-message directory-error-message"
+                id="directory-error-message"
+                hidden
+            >
+
+                <span class="directory-message-index">
+                    !!
+                </span>
+
+                <p class="directory-message-label">
+                    DATABASE CONNECTION ERROR
+                </p>
+
+                <h3>
+                    The case directory could not be loaded.
+                </h3>
+
+                <p id="directory-error-text">
+                    Please refresh the page or return to the database homepage.
+                </p>
+
+                <a href="index.html">
+                    RETURN TO DATABASE →
+                </a>
+
+            </div>
+
+
+            <!-- Pagination -->
+
+            <nav
+                class="directory-pagination"
+                id="directory-pagination"
+                aria-label="Case directory pages"
+                hidden
+            >
+
+                <button
+                    type="button"
+                    id="previous-page-button"
+                    disabled
+                >
+                    ← PREVIOUS
+                </button>
+
+                <p id="pagination-status">
+                    PAGE 1 OF 1
+                </p>
+
+                <button
+                    type="button"
+                    id="next-page-button"
+                    disabled
+                >
+                    NEXT →
+                </button>
+
+            </nav>
+
+        </section>
+
+
+        <!-- =====================================
+             DIRECTORY INFORMATION
+        ====================================== -->
+
+        <section class="directory-information">
+
+            <article class="directory-information-card">
+
+                <span class="card-number">
+                    01
+                </span>
+
+                <p class="card-label">
+                    RECORD SCOPE
+                </p>
+
+                <h3>
+                    Publicly documented missing and murdered persons records.
+                </h3>
+
+                <p>
+                    The directory includes cases identified through public
+                    records, news archives, official agency sources, and
+                    structured research review.
+                </p>
+
+            </article>
+
+
+            <article class="directory-information-card">
+
+                <span class="card-number">
+                    02
+                </span>
+
+                <p class="card-label">
+                    DATA LIMITATIONS
+                </p>
+
+                <h3>
+                    Absence from this directory does not establish absence
+                    from the historical record.
+                </h3>
+
+                <p>
+                    Reporting gaps, inconsistent classification, inaccessible
+                    records, and limited public documentation may affect the
+                    number and completeness of available cases.
+                </p>
+
+            </article>
+
+
+            <article class="directory-information-card">
+
+                <span class="card-number">
+                    03
+                </span>
+
+                <p class="card-label">
+                    CASE INFORMATION
+                </p>
+
+                <h3>
+                    Each record reflects the information available at the time
+                    of publication.
+                </h3>
+
+                <p>
+                    Case details may be revised as additional documentation,
+                    corrections, or official updates become available.
+                </p>
+
+            </article>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <footer class="site-footer">
+
+        <div class="footer-inner">
+
+            <div>
+
+                <p class="footer-name">
+                    WASHINGTON, D.C. MISSING AND MURDERED
+                    BLACK WOMEN DATABASE
+                </p>
+
+                <p class="footer-subtitle">
+                    A DEADLINING RESEARCH INITIATIVE
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <p class="footer-name">
+                    PRINCIPAL INVESTIGATOR
+                </p>
+
+                <p class="footer-subtitle">
+                    AVERY BERNARD JOHNS
+                </p>
+
+            </div>
+
+
+            <nav aria-label="Footer navigation">
+
+                <a href="index.html">
+                    DATABASE
+                </a>
+
+                <a href="cases.html">
+                    CASE DIRECTORY
+                </a>
+
+                <a href="index.html#interactive-map">
+                    INTERACTIVE MAP
+                </a>
+
+            </nav>
+
+        </div>
+
+
+        <p class="footer-copyright">
+            © 2026 DEADLINING. ALL RIGHTS RESERVED.
+        </p>
+
+    </footer>
+
+
+    <!-- Papa Parse reads the CSV safely in the browser -->
+    <script
+        src="https://cdn.jsdelivr.net/npm/papaparse@5.5.3/papaparse.min.js"
+    ></script>
+
+    <script
+    src="https://cdn.jsdelivr.net/npm/papaparse@5.5.3/papaparse.min.js"
+></script>
+
+<script
+    src="https://api.mapbox.com/mapbox-gl-js/v3.25.0/mapbox-gl.js"
+></script>
+
+<script src="cases.js?v=1"></script>
+
+    <!-- Directory functionality -->
+    <script src="cases.js?v=1"></script>
+
+</body>
+
+</html>
