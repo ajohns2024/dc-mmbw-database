@@ -553,12 +553,115 @@ body {
     font-size: 0.66rem;
 }
 
+/* =========================================
+   FOOTER
+========================================= */
+
+.site-footer {
+    margin-top: 90px;
+    padding: 42px 32px 24px;
+    background: #050505;
+    border-top: 1px solid var(--border);
+}
+
+.footer-inner {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr 0.65fr;
+    gap: 60px;
+    align-items: start;
+    width: min(1500px, calc(100% - 64px));
+    margin: 0 auto;
+}
+
+.footer-name {
+    margin: 0 0 14px;
+    color: var(--white);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.footer-inner > div > p:not(.footer-name):not(.footer-subtitle) {
+    max-width: 430px;
+    margin: 0 0 10px;
+    color: var(--white-soft);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.footer-subtitle {
+    max-width: 430px;
+    margin: 5px 0 0;
+    color: var(--muted);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.64rem;
+    line-height: 1.65;
+    letter-spacing: 0.03em;
+}
+
+.footer-inner nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.footer-inner nav::before {
+    content: "NAVIGATION";
+    margin-bottom: 3px;
+    color: var(--muted);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+}
+
+.footer-inner nav a {
+    color: var(--white-soft);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+}
+
+.footer-inner nav a:hover {
+    color: #8f2435;
+}
+
+.footer-copyright {
+    width: min(1500px, calc(100% - 64px));
+    margin: 34px auto 0;
+    padding-top: 18px;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
 
 /* =========================================
    RESPONSIVE
 ========================================= */
 
 @media (max-width: 1050px) {
+
+   .footer-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.footer-inner nav {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 14px 24px;
+}
+
+.footer-inner nav::before {
+    width: 100%;
+}
 
     .database-hero,
     .about-heading {
@@ -614,6 +717,25 @@ body {
 }
 
 @media (max-width: 520px) {
+
+   .site-footer {
+    padding: 34px 20px 22px;
+}
+
+.footer-inner,
+.footer-copyright {
+    width: 100%;
+}
+
+.footer-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+}
+
+.footer-inner nav {
+    grid-column: auto;
+    flex-direction: column;
+}
 
     .database-hero h1 {
         font-size: 2.4rem;
