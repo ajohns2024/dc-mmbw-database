@@ -640,12 +640,12 @@ body {
 ========================================= */
 
 .mapboxgl-popup-content {
-    background: #050505;
-    color: #f4f4f1;
-    border: 1px solid #3a3a3a;
-    border-radius: 0;
-    box-shadow: none;
-    padding: 18px;
+    background: #050505 !important;
+    color: #f4f4f1 !important;
+    border: 1px solid #3a3a3a !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 18px !important;
 }
 
 .mapboxgl-popup-tip {
@@ -654,7 +654,7 @@ body {
 }
 
 .mapboxgl-popup-close-button {
-    color: #d9b8c4;
+    color: #d9b8c4 !important;
     font-size: 18px;
     padding: 5px 8px;
 }
