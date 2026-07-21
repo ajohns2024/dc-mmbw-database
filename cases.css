@@ -1,1 +1,1003 @@
+/* =========================================================
+   CASE DIRECTORY PAGE
+========================================================= */
 
+:root {
+    --directory-black: #050505;
+    --directory-panel: #0b0b0b;
+    --directory-panel-light: #101010;
+    --directory-white: #f4f1ed;
+    --directory-muted: #aaa5a0;
+    --directory-dim: #77736f;
+    --directory-line: #33302e;
+    --directory-soft-line: #23211f;
+    --directory-burgundy: #742438;
+    --directory-burgundy-light: #a54c65;
+}
+
+
+/* =========================================================
+   PAGE FOUNDATION
+========================================================= */
+
+body {
+    background: var(--directory-black);
+    color: var(--directory-white);
+}
+
+main {
+    width: 100%;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+button,
+select {
+    cursor: pointer;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+
+/* =========================================================
+   DIRECTORY HERO
+========================================================= */
+
+.directory-hero {
+    padding: 46px 5vw 30px;
+    border-bottom: 1px solid var(--directory-line);
+}
+
+.directory-hero-inner {
+    max-width: 1450px;
+    margin: 0 auto;
+}
+
+.directory-eyebrow,
+.section-kicker {
+    margin: 0 0 18px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.17em;
+    color: var(--directory-muted);
+    text-transform: uppercase;
+}
+
+.directory-hero h1 {
+    margin: 0;
+    font-size: clamp(38px, 5vw, 72px);
+    line-height: 0.95;
+    letter-spacing: -0.045em;
+    text-transform: uppercase;
+}
+
+.directory-hero-description {
+    max-width: 770px;
+    margin: 26px 0 0;
+    font-size: clamp(16px, 1.4vw, 20px);
+    line-height: 1.6;
+    color: #d0cbc6;
+}
+
+
+/* =========================================================
+   STATUS STRIP
+========================================================= */
+
+.directory-status-strip {
+    max-width: 1450px;
+    margin: 0 auto;
+    padding: 16px 5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    border-bottom: 1px solid var(--directory-line);
+}
+
+.directory-status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.directory-status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #6fa36a;
+    flex: 0 0 auto;
+}
+
+.directory-status-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.directory-status-label {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--directory-muted);
+}
+
+.directory-status-value {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--directory-white);
+}
+
+.directory-map-token-status {
+    padding: 9px 12px;
+    border: 1px solid var(--directory-line);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+}
+
+
+/* =========================================================
+   DIRECTORY NAVIGATION
+========================================================= */
+
+.directory-navigation {
+    max-width: 1450px;
+    margin: 0 auto;
+    padding: 0 5vw;
+    display: flex;
+    gap: 42px;
+    border-bottom: 1px solid var(--directory-line);
+}
+
+.directory-navigation a {
+    padding: 17px 0 14px;
+    color: var(--directory-muted);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+}
+
+.directory-navigation a:hover,
+.directory-navigation a[aria-current="page"] {
+    color: var(--directory-white);
+    border-bottom-color: var(--directory-white);
+}
+
+
+/* =========================================================
+   SEARCH SECTION
+========================================================= */
+
+.directory-search-section {
+    padding: 38px 5vw 30px;
+}
+
+.directory-search-inner {
+    max-width: 1450px;
+    margin: 0 auto;
+}
+
+.directory-section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 30px;
+    margin-bottom: 24px;
+}
+
+.directory-section-heading h2 {
+    margin: 5px 0 0;
+    font-size: clamp(25px, 2.8vw, 42px);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+}
+
+.clear-directory-button {
+    padding: 10px 14px;
+    border: 1px solid var(--directory-line);
+    background: transparent;
+    color: var(--directory-white);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.clear-directory-button:hover {
+    background: var(--directory-white);
+    color: var(--directory-black);
+}
+
+
+/* =========================================================
+   MAIN SEARCH BAR
+========================================================= */
+
+.directory-search-control {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    margin-bottom: 22px;
+}
+
+.directory-search-label {
+    grid-column: 1 / -1;
+    margin-bottom: 9px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--directory-muted);
+}
+
+#directory-search-input {
+    width: 100%;
+    min-width: 0;
+    height: 58px;
+    padding: 0 18px;
+    border: 1px solid var(--directory-line);
+    border-right: 0;
+    background: #080808;
+    color: var(--directory-white);
+    font-size: 15px;
+    outline: none;
+}
+
+#directory-search-input:focus {
+    border-color: var(--directory-burgundy-light);
+    box-shadow: inset 0 0 0 1px var(--directory-burgundy-light);
+}
+
+#directory-search-input::placeholder {
+    color: #77736f;
+}
+
+#directory-search-button {
+    min-width: 130px;
+    padding: 0 22px;
+    border: 1px solid var(--directory-white);
+    background: var(--directory-white);
+    color: var(--directory-black);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+}
+
+#directory-search-button:hover {
+    background: var(--directory-burgundy);
+    border-color: var(--directory-burgundy);
+    color: white;
+}
+
+
+/* =========================================================
+   FILTERS
+========================================================= */
+
+.directory-filter-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 13px;
+}
+
+.search-filter {
+    min-width: 0;
+}
+
+.search-filter label {
+    display: block;
+    margin-bottom: 8px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.11em;
+    color: var(--directory-muted);
+}
+
+.search-filter select {
+    width: 100%;
+    height: 50px;
+    padding: 0 42px 0 14px;
+    border: 1px solid var(--directory-line);
+    border-radius: 0;
+    background-color: #080808;
+    color: var(--directory-white);
+    font-size: 14px;
+    outline: none;
+}
+
+.search-filter select:focus {
+    border-color: var(--directory-burgundy-light);
+}
+
+
+/* =========================================================
+   ACTIVE FILTERS
+========================================================= */
+
+.active-filter-row {
+    max-width: 1450px;
+    margin: 0 auto;
+    padding: 0 5vw 26px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.active-filter-label {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--directory-muted);
+}
+
+#active-filter-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.active-filter-chip {
+    padding: 7px 10px;
+    border: 1px solid #54303a;
+    background: rgba(116, 36, 56, 0.17);
+    color: #e1bdc7;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   DIRECTORY INTRODUCTION
+========================================================= */
+
+.directory-results {
+    padding: 30px 5vw 80px;
+    border-top: 1px solid var(--directory-soft-line);
+}
+
+.directory-results-inner {
+    max-width: 1450px;
+    margin: 0 auto;
+}
+
+.directory-disclaimer {
+    margin: 0 0 32px;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--directory-line);
+    color: #c3beba;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.directory-results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 30px;
+    margin-bottom: 24px;
+}
+
+.directory-results-title h2 {
+    margin: 7px 0 0;
+    font-size: clamp(28px, 3vw, 44px);
+    line-height: 1;
+    letter-spacing: -0.035em;
+    text-transform: uppercase;
+}
+
+.directory-results-controls {
+    display: flex;
+    align-items: flex-end;
+    gap: 18px;
+}
+
+.results-count {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--directory-white);
+    white-space: nowrap;
+}
+
+.directory-sort-control label {
+    display: block;
+    margin-bottom: 7px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: var(--directory-muted);
+}
+
+#directory-sort {
+    height: 38px;
+    padding: 0 35px 0 12px;
+    border: 1px solid var(--directory-line);
+    border-radius: 0;
+    background: var(--directory-black);
+    color: var(--directory-white);
+}
+
+
+/* =========================================================
+   CASES + MAP LAYOUT
+========================================================= */
+
+.directory-content-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) minmax(330px, 0.8fr);
+    gap: 30px;
+    align-items: start;
+}
+
+.directory-records-column {
+    min-width: 0;
+}
+
+.directory-map-column {
+    position: sticky;
+    top: 22px;
+    min-width: 0;
+    border: 1px solid var(--directory-line);
+    background: var(--directory-panel);
+}
+
+.directory-map-heading {
+    min-height: 90px;
+    padding: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 18px;
+    border-bottom: 1px solid var(--directory-line);
+}
+
+.directory-map-heading h3 {
+    margin: 5px 0 0;
+    font-size: 20px;
+    letter-spacing: -0.02em;
+}
+
+.map-legend {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 9px;
+    color: var(--directory-muted);
+    letter-spacing: 0.07em;
+}
+
+.legend-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-right: 7px;
+    border-radius: 50%;
+    background: var(--directory-burgundy);
+}
+
+.directory-map-frame {
+    position: relative;
+    height: 570px;
+    overflow: hidden;
+}
+
+#directory-map {
+    width: 100%;
+    height: 100%;
+}
+
+.map-loading {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #080808;
+    color: var(--directory-muted);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.11em;
+}
+
+.map-location-label {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    z-index: 3;
+    padding: 7px 9px;
+    border: 1px solid var(--directory-line);
+    background: rgba(5, 5, 5, 0.88);
+    color: var(--directory-white);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 8px;
+    letter-spacing: 0.08em;
+}
+
+.directory-map-footer {
+    padding: 15px 18px;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    border-top: 1px solid var(--directory-line);
+}
+
+.directory-map-footer p {
+    margin: 0;
+    color: var(--directory-muted);
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.directory-map-footer a {
+    flex: 0 0 auto;
+    color: var(--directory-white);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 9px;
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   CASE CARD GRID
+========================================================= */
+
+.case-directory-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+
+/* =========================================================
+   CASE CARDS
+========================================================= */
+
+.case-card {
+    position: relative;
+    min-width: 0;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--directory-line);
+    background: var(--directory-panel);
+    transition:
+        border-color 180ms ease,
+        background 180ms ease,
+        transform 180ms ease;
+}
+
+.case-card:hover,
+.case-card:focus-within {
+    border-color: #76515b;
+    background: #0f0d0e;
+    transform: translateY(-2px);
+}
+
+.case-card-highlighted {
+    border-color: var(--directory-burgundy-light);
+    box-shadow: inset 4px 0 0 var(--directory-burgundy);
+}
+
+.case-card-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 28px;
+}
+
+.case-card-id,
+.case-card-index {
+    margin: 0;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: var(--directory-muted);
+}
+
+.case-card-index {
+    color: var(--directory-burgundy-light);
+}
+
+.case-card-type {
+    margin: 0 0 9px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 0.13em;
+    color: var(--directory-burgundy-light);
+    text-transform: uppercase;
+}
+
+.case-card-title h3 {
+    margin: 0;
+    font-size: clamp(20px, 1.7vw, 28px);
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+}
+
+.case-card-status-row {
+    margin: 18px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.case-status,
+.identity-status {
+    padding: 7px 9px;
+    border: 1px solid var(--directory-line);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 8px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.case-status {
+    border-color: #59323d;
+    background: rgba(116, 36, 56, 0.14);
+    color: #e3c2cb;
+}
+
+.identity-status {
+    color: var(--directory-muted);
+}
+
+.case-card-metadata {
+    margin: 0 0 20px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-top: 1px solid var(--directory-soft-line);
+    border-left: 1px solid var(--directory-soft-line);
+}
+
+.case-card-metadata > div {
+    min-width: 0;
+    padding: 12px;
+    border-right: 1px solid var(--directory-soft-line);
+    border-bottom: 1px solid var(--directory-soft-line);
+}
+
+.case-card-metadata .case-location-field {
+    grid-column: 1 / -1;
+}
+
+.case-card-metadata dt {
+    margin-bottom: 6px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 8px;
+    letter-spacing: 0.11em;
+    color: var(--directory-dim);
+}
+
+.case-card-metadata dd {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--directory-white);
+    overflow-wrap: anywhere;
+}
+
+.case-card-summary {
+    margin: 0 0 22px;
+    color: #bbb6b2;
+    font-size: 13px;
+    line-height: 1.65;
+}
+
+.case-card-link {
+    margin-top: auto;
+    padding-top: 16px;
+    display: inline-flex;
+    align-items: center;
+    border-top: 1px solid var(--directory-soft-line);
+    color: var(--directory-white);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+}
+
+.case-card-link:hover {
+    color: var(--directory-burgundy-light);
+}
+
+
+/* =========================================================
+   LOADING / EMPTY / ERROR STATES
+========================================================= */
+
+.directory-loading-status {
+    margin-bottom: 20px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    color: var(--directory-muted);
+}
+
+.directory-loading-status::before {
+    content: "";
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-right: 10px;
+    border-radius: 50%;
+    background: #6fa36a;
+}
+
+.directory-message {
+    padding: 60px 30px;
+    border: 1px solid var(--directory-line);
+    text-align: center;
+    background: var(--directory-panel);
+}
+
+.directory-message h3 {
+    margin: 0 0 12px;
+    font-size: 25px;
+}
+
+.directory-message p {
+    max-width: 580px;
+    margin: 0 auto 22px;
+    color: var(--directory-muted);
+    line-height: 1.6;
+}
+
+.directory-message button {
+    padding: 11px 15px;
+    border: 1px solid var(--directory-white);
+    background: var(--directory-white);
+    color: var(--directory-black);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   PAGINATION
+========================================================= */
+
+.directory-pagination {
+    margin-top: 34px;
+    padding-top: 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+    border-top: 1px solid var(--directory-line);
+}
+
+.directory-pagination button {
+    min-width: 130px;
+    padding: 11px 15px;
+    border: 1px solid var(--directory-line);
+    background: transparent;
+    color: var(--directory-white);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 0.09em;
+}
+
+.directory-pagination button:hover:not(:disabled) {
+    background: var(--directory-white);
+    color: var(--directory-black);
+}
+
+.directory-pagination button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+#pagination-status {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--directory-muted);
+}
+
+
+/* =========================================================
+   MAPBOX POPUP
+========================================================= */
+
+.mapboxgl-popup-content {
+    padding: 0;
+    border: 1px solid #4b4143;
+    border-radius: 0;
+    background: #080808;
+    color: var(--directory-white);
+    box-shadow: none;
+}
+
+.mapboxgl-popup-tip {
+    border-top-color: #080808 !important;
+    border-bottom-color: #080808 !important;
+}
+
+.mapboxgl-popup-close-button {
+    z-index: 2;
+    padding: 7px 9px;
+    color: #d5a5b2;
+    font-size: 18px;
+}
+
+.directory-map-popup {
+    width: 270px;
+    padding: 19px;
+}
+
+.map-popup-case-id {
+    margin: 0 0 13px;
+    padding-right: 20px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: var(--directory-muted);
+}
+
+.directory-map-popup h3 {
+    margin: 0 0 9px;
+    font-size: 20px;
+    line-height: 1.1;
+}
+
+.map-popup-status {
+    margin: 0 0 15px;
+    color: var(--directory-burgundy-light);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 0.07em;
+}
+
+.directory-map-popup dl {
+    margin: 0 0 16px;
+    border-top: 1px solid var(--directory-soft-line);
+}
+
+.directory-map-popup dl > div {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--directory-soft-line);
+}
+
+.directory-map-popup dt {
+    margin-bottom: 4px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 8px;
+    color: var(--directory-dim);
+    letter-spacing: 0.1em;
+}
+
+.directory-map-popup dd {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+.directory-map-popup a {
+    color: var(--directory-white);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+    .directory-filter-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .directory-content-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .directory-map-column {
+        position: relative;
+        top: auto;
+        order: -1;
+    }
+
+    .directory-map-frame {
+        height: 430px;
+    }
+
+    .case-directory-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+    .directory-hero,
+    .directory-search-section,
+    .directory-results {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .directory-status-strip,
+    .directory-navigation,
+    .active-filter-row {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .directory-status-strip {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .directory-navigation {
+        gap: 24px;
+        overflow-x: auto;
+    }
+
+    .directory-navigation a {
+        flex: 0 0 auto;
+    }
+
+    .directory-section-heading,
+    .directory-results-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .directory-search-control {
+        grid-template-columns: 1fr;
+    }
+
+    #directory-search-input {
+        border-right: 1px solid var(--directory-line);
+    }
+
+    #directory-search-button {
+        height: 48px;
+        margin-top: 8px;
+    }
+
+    .directory-filter-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .directory-results-controls {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .case-directory-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .directory-map-frame {
+        height: 360px;
+    }
+
+    .directory-map-footer {
+        flex-direction: column;
+    }
+
+    .directory-pagination {
+        flex-wrap: wrap;
+    }
+
+    .directory-pagination button {
+        min-width: 110px;
+    }
+}
