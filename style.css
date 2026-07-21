@@ -323,12 +323,12 @@ body {
 
 .stat-value {
     margin: 25px 0 21px;
-    color: #9f2940;
+    color: var(--white);
     font-family: "IBM Plex Mono", monospace;
-    font-size: clamp(2rem, 3vw, 3.5rem);
-    font-weight: 600;
+    font-size: clamp(2.3rem, 4vw, 4rem);
+    font-weight: 700;
     line-height: 1;
-    letter-spacing: -0.06em;
+    letter-spacing: -0.08em;
 }
 
 .stat-label {
