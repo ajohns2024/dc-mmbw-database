@@ -638,24 +638,19 @@ body {
 /* ===========================
    CASE POPUP
 =========================== */
-.mapboxgl-popup-content{
-    background:#f7f4ef;
-    border:1px solid #65001c;
-    border-radius:0;
-    padding:12px 14px;
-    box-shadow:none;
-}
-.mapboxgl-popup-content{
-    background:#13080d;
-    border:1px solid #7a1f3d;
-    border-radius:2px;
-    padding:14px 16px;
-    box-shadow:0 0 0 1px rgba(255,255,255,.04);
+.mapboxgl-popup-content {
+    background: #050505;
+    color: #f4f4f1;
+    border: 1px solid #3a3a3a;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 18px;
 }
 
-.mapboxgl-popup-tip{
-    border-top-color:#13080d !important;
-    border-bottom-color:#13080d !important;
+
+..mapboxgl-popup-tip {
+    border-top-color: #050505 !important;
+    border-bottom-color: #050505 !important;
 }
 
 .mapboxgl-popup-close-button{
