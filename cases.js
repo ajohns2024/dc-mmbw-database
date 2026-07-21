@@ -960,9 +960,17 @@ function clearDirectoryFilters() {
 ============================================ */
 
 function initializeMap() {
-    if (!mapboxgl.accessToken) {
+
+    if (
+        typeof mapboxgl === "undefined" ||
+        !mapboxgl.accessToken
+    ) {
         mapLoading.textContent =
-            "MAPBOX ACCESS TOKEN REQUIRED";
+            "MAP COULD NOT BE LOADED";
+
+        console.error(
+            "Mapbox failed to load or the access token is missing."
+        );
 
         return;
     }
@@ -984,6 +992,8 @@ function initializeMap() {
         }),
         "top-right"
     );
+
+    // keep the rest of your initializeMap() exactly the same...
 
     directoryMap.on("style.load", () => {
         directoryMap.setConfigProperty(
