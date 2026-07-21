@@ -18,17 +18,17 @@
         Washington D.C. Database for Missing and Murdered Black Women
     </title>
 
-    <!-- Main stylesheet -->
-      <link rel="stylesheet" href="style.css?v=9">
-    <!-- Mapbox stylesheet -->
+    <!-- Mapbox stylesheet must load first -->
     <link
         href="https://api.mapbox.com/mapbox-gl-js/v3.25.0/mapbox-gl.css"
         rel="stylesheet"
     >
+
+    <!-- Your stylesheet must load after Mapbox -->
+    <link rel="stylesheet" href="style.css?v=10">
 </head>
 
 <body>
-
     <!-- =========================================
          HEADER IMAGE
     ========================================== -->
