@@ -357,42 +357,93 @@ body {
     display: block;
     margin-bottom: 8px;
     color: var(--muted);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
 }
+
+/* ===========================
+   SEARCH BAR
+=========================== */
 
 .search-input-row {
     display: grid;
     grid-template-columns: 1fr auto;
 }
 
-.search-input-row input,
-.search-filter select {
+.search-input-row input {
     width: 100%;
     height: 52px;
-    background: var(--black);
-    color: var(--white);
-    border: 1px solid var(--border-light);
+    padding: 0 16px;
+
+    background: #ffffff;
+    color: #111111;
+
+    border: 1px solid #d9d9d9;
+    border-right: none;
     border-radius: 0;
+
+    font-size: 0.92rem;
+    font-family: "Neue Haas Grotesk", sans-serif;
 }
 
-.search-input-row input {
-    padding: 0 15px;
-    border-right: 0;
+.search-input-row input::placeholder {
+    color: #8a8a8a;
 }
+
+.search-input-row input:focus {
+    outline: none;
+    border-color: #7b1026;
+}
+
+/* ===========================
+   SEARCH BUTTON
+=========================== */
 
 .search-input-row button {
     height: 52px;
-    padding: 0 28px;
-    background: var(--white);
-    color: var(--black);
-    border: 1px solid var(--white);
+    padding: 0 30px;
+
+    background: #7b1026;
+    color: #ffffff;
+
+    border: 1px solid #7b1026;
+
     font-family: "IBM Plex Mono", monospace;
     font-size: 0.66rem;
+    letter-spacing: 0.08em;
     cursor: pointer;
+
+    transition: background 0.2s ease;
 }
 
-.search-filter select {
-    padding: 0 12px;
+.search-input-row button:hover {
+    background: #941530;
 }
+
+/* ===========================
+   FILTERS
+=========================== */
+
+.search-filter select {
+    width: 100%;
+    height: 52px;
+
+    background: var(--black);
+    color: var(--white);
+
+    border: 1px solid var(--border-light);
+    border-radius: 0;
+
+    padding: 0 12px;
+
+    font-family: "Neue Haas Grotesk", sans-serif;
+    font-size: 0.9rem;
+}
+
+/* ===========================
+   STATUS
+=========================== */
 
 .search-status-row {
     display: flex;
@@ -409,7 +460,6 @@ body {
     font-family: "IBM Plex Mono", monospace;
     font-size: 0.63rem;
 }
-
 
 /* =========================================
    ABOUT SECTION
