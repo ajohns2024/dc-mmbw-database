@@ -906,3 +906,336 @@ body {
 .popup-link:hover {
     color: #ffffff;
 }
+
+/* =========================================
+   CURRENT MISSING PERSONS BULLETIN
+========================================= */
+
+.missing-bulletin {
+    --bulletin-black: #080808;
+    --bulletin-white: #f7f5ef;
+    --bulletin-paper: #e9e4d8;
+    --bulletin-red: #a71414;
+
+    margin: 38px 0 52px;
+    border: 1px solid var(--bulletin-black);
+    background:
+        linear-gradient(
+            rgba(247, 245, 239, 0.94),
+            rgba(247, 245, 239, 0.94)
+        ),
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 4px,
+            rgba(0, 0, 0, 0.025) 5px
+        );
+    color: var(--bulletin-black);
+    overflow: hidden;
+}
+
+.bulletin-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    padding: 12px 20px;
+    background: var(--bulletin-black);
+    color: #fff;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.bulletin-topbar p {
+    margin: 0;
+}
+
+.bulletin-status {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.bulletin-status-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--bulletin-red);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(167, 20, 20, 0.25);
+    animation: bulletin-pulse 2s infinite;
+}
+
+@keyframes bulletin-pulse {
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.45;
+    }
+}
+
+.bulletin-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+    gap: 48px;
+    padding: 46px 42px 40px;
+    border-bottom: 1px solid var(--bulletin-black);
+}
+
+.bulletin-eyebrow {
+    grid-column: 1 / -1;
+    margin: 0 0 -28px;
+    color: var(--bulletin-red);
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 0.19em;
+    text-transform: uppercase;
+}
+
+.bulletin-header h2 {
+    margin: 0;
+    font-size: clamp(4rem, 10vw, 8.6rem);
+    font-weight: 900;
+    line-height: 0.78;
+    letter-spacing: -0.075em;
+    text-transform: uppercase;
+}
+
+.bulletin-header-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 24px;
+}
+
+.bulletin-introduction {
+    margin: 0;
+    font-size: clamp(1rem, 1.5vw, 1.28rem);
+    line-height: 1.55;
+}
+
+.bulletin-question {
+    margin: 0;
+    padding: 18px 0 0 20px;
+    border-top: 1px solid var(--bulletin-black);
+    border-left: 5px solid var(--bulletin-red);
+    font-size: 0.92rem;
+    font-weight: 650;
+    line-height: 1.6;
+}
+
+.bulletin-divider {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 10px 18px;
+    border-bottom: 1px solid var(--bulletin-black);
+    background: var(--bulletin-red);
+    color: #fff;
+    font-size: 0.67rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.missing-flyer-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    background: var(--bulletin-black);
+    gap: 1px;
+}
+
+.missing-flyer-card {
+    position: relative;
+    min-width: 0;
+    background: var(--bulletin-white);
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease;
+}
+
+.missing-flyer-card:hover {
+    z-index: 2;
+    transform: translateY(-5px);
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.22);
+}
+
+.flyer-image-wrapper {
+    position: relative;
+    padding: 13px;
+    background: var(--bulletin-paper);
+    border-bottom: 1px solid var(--bulletin-black);
+}
+
+.flyer-image-wrapper img {
+    display: block;
+    width: 100%;
+    height: 390px;
+    object-fit: contain;
+    background: #fff;
+    filter: saturate(0.92) contrast(1.03);
+}
+
+.flyer-number {
+    position: absolute;
+    top: 21px;
+    left: 21px;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    background: var(--bulletin-black);
+    color: #fff;
+    font-size: 0.69rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+}
+
+.missing-flyer-info {
+    min-height: 125px;
+    padding: 18px;
+}
+
+.flyer-status {
+    margin: 0 0 7px;
+    color: var(--bulletin-red);
+    font-size: 0.67rem;
+    font-weight: 850;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.missing-flyer-info h3 {
+    margin: 0 0 9px;
+    font-size: 1.08rem;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.missing-flyer-info > p:last-child {
+    margin: 0;
+    font-size: 0.76rem;
+    opacity: 0.7;
+}
+
+.bulletin-footer {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 0.65fr);
+    gap: 42px;
+    padding: 28px 34px;
+    background: var(--bulletin-black);
+    color: #fff;
+}
+
+.bulletin-footer p {
+    margin: 0;
+    line-height: 1.55;
+}
+
+.bulletin-footer-label {
+    margin-bottom: 7px !important;
+    color: #e65a5a;
+    font-size: 0.71rem;
+    font-weight: 800;
+    letter-spacing: 0.17em;
+}
+
+.bulletin-disclaimer {
+    align-self: end;
+    font-size: 0.75rem;
+    opacity: 0.67;
+}
+
+
+/* Tablet */
+
+@media (max-width: 1100px) {
+    .missing-flyer-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .flyer-image-wrapper img {
+        height: 430px;
+    }
+}
+
+
+/* Small tablet */
+
+@media (max-width: 760px) {
+    .bulletin-header {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 38px 24px 32px;
+    }
+
+    .bulletin-eyebrow {
+        margin-bottom: -13px;
+    }
+
+    .bulletin-header h2 {
+        font-size: clamp(4rem, 18vw, 7rem);
+    }
+
+    .missing-flyer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .flyer-image-wrapper img {
+        height: 390px;
+    }
+
+    .bulletin-footer {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+}
+
+
+/* Mobile */
+
+@media (max-width: 520px) {
+    .missing-bulletin {
+        margin: 24px 0 38px;
+    }
+
+    .bulletin-topbar {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 7px;
+    }
+
+    .bulletin-header {
+        padding: 32px 18px 28px;
+    }
+
+    .bulletin-header h2 {
+        font-size: 4rem;
+    }
+
+    .bulletin-divider span:last-child {
+        display: none;
+    }
+
+    .missing-flyer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .flyer-image-wrapper img {
+        height: auto;
+        max-height: 620px;
+    }
+
+    .missing-flyer-info {
+        min-height: auto;
+    }
+
+    .bulletin-footer {
+        padding: 24px 20px;
+    }
+}
