@@ -506,6 +506,27 @@ pinImage.src =
     });
 }
 
+const openFullMapButton =
+    document.getElementById("open-full-map");
+
+openFullMapButton.addEventListener("click", async (event) => {
+    event.preventDefault();
+
+    const mapContainer = map.getContainer();
+
+    if (!document.fullscreenElement) {
+        await mapContainer.requestFullscreen();
+    } else {
+        await document.exitFullscreen();
+    }
+});
+
+document.addEventListener("fullscreenchange", () => {
+    setTimeout(() => {
+        map.resize();
+    }, 100);
+});
+
 /* =========================================
    SEARCH EVENTS
 ========================================= */
