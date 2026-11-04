@@ -509,7 +509,7 @@ pinImage.src =
 const openFullMapButton =
     document.getElementById("open-full-map");
 
-openFullMapButton.addEventListener("click", async (event) => {
+openFullMapButton?.addEventListener("click", async (event) => {
     event.preventDefault();
 
     const mapContainer = map.getContainer();
